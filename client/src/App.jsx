@@ -26,7 +26,7 @@ function App() {
         </p>
       </div>
       <p className="read-the-docs">
-        Click 
+        Clickkk
       </p>
     </>
   )
