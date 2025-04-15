@@ -1,0 +1,33 @@
+/* Navbar.css */
+
+.navbar {
+    background-color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e5e7eb; /* светло-серая линия снизу */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* более сильная тень */
+    position: fixed; /* фиксируем навбар сверху */
+    top: 0;
+    left: 0;
+    width: 100%; /* на весь экран */
+    z-index: 100;
+  }
+  
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937; /* text-gray-800 */
+  }
+  
+  .navbar-menu {
+    font-size: 1.5rem;
+    color: #1f2937;
+    cursor: pointer;
+    margin-right: 20px; /* сдвигаем влево */
+  }
+  
