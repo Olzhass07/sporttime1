@@ -29,6 +29,12 @@
     color: #1f2937;
     cursor: pointer;
     margin-right: 50px; /* сдвигаем влево */
+    opacity: 1; /* Нормальная непрозрачность */
+    transition: opacity 0.3s ease; 
+  }
+
+  .navbar-menu-icon:hover {
+    opacity: 0.8; /* Уменьшаем непрозрачность при наведении */
   }
   
 
@@ -37,5 +43,11 @@
     color: #1f2937;
     cursor: pointer;
     margin-right: 50px; /* сдвигаем влево */
+    opacity: 1; /* Нормальная непрозрачность */
+    transition: opacity 0.3s ease; 
   }
+
+  .navbar-profile-icon:hover {
+    opacity: 0.8; /* Уменьшаем непрозрачность при наведении */
+  } 
   
