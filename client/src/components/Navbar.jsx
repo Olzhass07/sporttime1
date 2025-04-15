@@ -5,12 +5,13 @@ const Navbar = () => {
   return (
     <header className="navbar">
       <div className="navbar-logo">
-        <i className="fas fa-dumbbell" />
+        <i className="fas fa-dumbbell"></i>
         <span>Sport Time</span>
       </div>
 
-      <div>
-        <i className="fas fa-bars navbar-menu-icon" />
+      <div className="navbar-icons">
+        <i className="fas fa-user-circle navbar-profile-icon"></i>
+        <i className="fas fa-bars navbar-menu-icon"></i>
       </div>
     </header>
   );
