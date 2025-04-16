@@ -13,6 +13,7 @@
     left: 0;
     width: 100%; /* на весь экран */
     z-index: 100;
+    
   }
   
   .navbar-logo {
