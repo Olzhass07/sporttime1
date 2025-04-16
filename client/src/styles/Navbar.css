@@ -13,42 +13,83 @@
     left: 0;
     width: 100%; /* на весь экран */
     z-index: 100;
-    
-  }
-  
-  .navbar-logo {
+    font-family: montserrat;
+}
+
+.navbar-logo {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 1000;
     color: #1f2937; /* text-gray-800 */
-  }
-  
-  .navbar-menu-icon {
+}
+
+.navbar-menu-icon {
     font-size: 2.5rem;
     color: #1f2937;
     cursor: pointer;
     margin-right: 50px; /* сдвигаем влево */
     opacity: 1; /* Нормальная непрозрачность */
-    transition: opacity 0.3s ease; 
-  }
+    transition: opacity 0.3s ease;
+}
 
-  .navbar-menu-icon:hover {
+.navbar-menu-icon:hover {
     opacity: 0.8; /* Уменьшаем непрозрачность при наведении */
-  }
-  
+}
 
-  .navbar-profile-icon {
+.navbar-profile-icon {
     font-size: 2.5rem;
     color: #1f2937;
     cursor: pointer;
     margin-right: 50px; /* сдвигаем влево */
     opacity: 1; /* Нормальная непрозрачность */
-    transition: opacity 0.3s ease; 
-  }
+    transition: opacity 0.3s ease;
+}
 
-  .navbar-profile-icon:hover {
+.navbar-profile-icon:hover {
     opacity: 0.8; /* Уменьшаем непрозрачность при наведении */
-  } 
-  
+}
+
+/* Выезжающее меню */
+.profile-menu {
+    position: absolute; /* Меню будет позиционироваться относительно родителя */
+    top: 60px; /* Расположение под Navbar */
+    right: 70px; /* Расположение справа */
+    width: 200px; /* Ширина меню */
+    background-color: white; /* Фон меню */
+    border: 1px solid #e5e7eb; /* Граница */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень */
+    border-radius: 8px; /* Скругление углов */
+    padding: 1rem;
+    display: none; /* Скрываем меню по умолчанию */
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 200; /* Поверх других элементов */
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0; /* Прозрачность по умолчанию */
+    transform: translateY(-10px); /* Сдвиг вверх по умолчанию */
+}
+
+.profile-menu.open {
+    display: flex; /* Показываем меню */
+    opacity: 1; /* Делаем меню видимым */
+    transform: translateY(0); /* Возвращаем меню в исходное положение */
+}
+
+.menu-item {
+    width: 100%;
+    padding: 0.5rem;
+    background: none;
+    border: none;
+    text-align: center;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #1f2937; /* text-gray-800 */
+}
+
+.menu-item:hover {
+    background-color: #f3f4f6; /* hover:bg-gray-100 */
+    border-radius: 4px;
+}
