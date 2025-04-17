@@ -1,0 +1,14 @@
+/* Контейнер для изображения */
+.auth-image {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px; /* Отступ снизу */
+}
+
+/* Стили для изображения */
+.auth-photo {
+  width: 100px; /* Ширина изображения */
+  height: 80px; /* Высота изображения */
+  object-fit: cover; /* Обрезаем изображение, чтобы оно вписывалось в круг */
+  
+}

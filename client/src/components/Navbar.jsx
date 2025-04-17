@@ -1,27 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/Navbar.css';
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+  const goToAuth = () => {
+    navigate('/auth'); // Переход на страницу аутентификации
   };
-
-  const closeMenu = (e) => {
-    // Закрываем меню, если клик был вне меню
-    if (!e.target.closest('.profile-menu') && !e.target.closest('.navbar-profile-icon')) {
-      setIsMenuOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('click', closeMenu);
-    return () => {
-      // Удаляем обработчик при размонтировании компонента
-      document.removeEventListener('click', closeMenu);
-    };
-  }, []);
 
   return (
     <header className="navbar">
@@ -31,14 +17,8 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-icons">
-        <i className="fas fa-user-circle navbar-profile-icon" onClick={toggleMenu}></i>
+        <i className="fas fa-user-circle navbar-profile-icon" onClick={goToAuth}></i>
         <i className="fas fa-bars navbar-menu-icon"></i>
-      </div>
-
-      {/* Выезжающее меню */}
-      <div className={`profile-menu ${isMenuOpen ? 'open' : ''}`}>
-        <button className="menu-item">Регистрация</button>
-        <button className="menu-item">Войти</button>
       </div>
     </header>
   );
