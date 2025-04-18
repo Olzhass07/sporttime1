@@ -10,5 +10,33 @@
   width: 100px; /* Ширина изображения */
   height: 80px; /* Высота изображения */
   object-fit: cover; /* Обрезаем изображение, чтобы оно вписывалось в круг */
-  
+}
+
+/* Контейнер для поля пароля с кнопкой */
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.auth-input {
+  flex: 1;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #203d91;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0;
+}
+
+/* Ошибка */
+.auth-error {
+  color: red;
+  font-size: 12px;
+  margin-top: 8px;
 }
