@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'; // для отправки HTTP-запросов
+import axios from 'axios';
+import { useAuth } from '../context/AuthContext.jsx';  // импортируем хук useAuth
 import '../styles/Authentication.css';
 
 const Authentication = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();  // доступ к методу login из контекста авторизации
 
   // Состояния для email, password и ошибки
   const [email, setEmail] = useState('');
@@ -27,9 +29,10 @@ const Authentication = () => {
       // Отправляем POST-запрос для авторизации
       const response = await axios.post('http://localhost:5000/auth/login', { email, password });
 
-      // Если авторизация успешна, перенаправляем на главную страницу
+      // Если авторизация успешна, сохраняем токен и обновляем состояние
       if (response.status === 200) {
-        navigate('/home'); // Или на главную страницу, как тебе нужно
+        login(response.data.token);  // вызываем login из контекста с полученным токеном
+        navigate('/');  // Переход на главную страницу (или на страницу, где меню и профиль активируются)
       }
     } catch (err) {
       // Если ошибка (например, неверные данные), показываем сообщение
