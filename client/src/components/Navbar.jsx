@@ -34,16 +34,15 @@ const Navbar = () => {
   return (
     <>
       <header className="navbar">
-        <div className="navbar-logo">
-          <i className="fas fa-dumbbell"></i>
+        <div className="navbar-logo"> 
+          <img src="../public/icon1.png" alt="Sport Time Logo" className="navbar-logo-img" />
           <span>Sport Time</span>
-        </div>
-
-        <div className="navbar-icons">
-          <i className="fas fa-user-circle navbar-profile-icon" onClick={handleProfileClick}></i>
-          {isAuthenticated && (
-            <i className="fas fa-bars navbar-menu-icon" onClick={toggleMenu}></i>
-          )}
+          <div className="navbar-icons-container">
+            <img src="/user-icon.svg" alt="Профиль" className="navbar-icon" onClick={handleProfileClick} />
+            {isAuthenticated && (
+              <img src="/menu-icon.svg" alt="Меню" className="navbar-icon" onClick={toggleMenu} />
+              )}
+          </div>
         </div>
       </header>
 

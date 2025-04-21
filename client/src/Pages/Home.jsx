@@ -22,13 +22,14 @@ const Home = () => {
       <Navbar />
       <main className="home-main">
         <div className="home-slogan">
-          <p className="normal-text">Мақсатың айқын —</p>
+          <p className="gradient-text">Мақсатың айқын —</p>
           <p className="gradient-text">жолың бізбен жарқын!</p>
         </div>
 
         <div>
-          <button className="home-button" onClick={handleStartWorkout}>
-            Жаттығуды бастау!
+        <button className="home-button" onClick={handleStartWorkout}>
+          Жаттығуды бастау!
+          <span className="arrow-icon">→</span>
           </button>
         </div>
 
