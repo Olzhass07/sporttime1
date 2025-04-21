@@ -1,0 +1,210 @@
+/* Основной контейнер */
+.calorie-calculator {
+  background-color: #f0f8ff; /* Светлый голубой фон */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 50px auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Заголовок */
+.calorie-calculator h1 {
+  color: #003366; /* Темно-синий */
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 28px;
+}
+
+/* Группы форм */
+.form-group {
+  margin-bottom: 20px;
+  
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #003366;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+/* Поля ввода */
+input[type="number"],
+select {
+  width: 100%;
+  padding: 12px;
+  border: 1.5px solid #003366;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #ffffff;
+  transition: border-color 0.3s ease;
+}
+
+input[type="number"]:focus,
+select:focus {
+  border-color: #00509e;
+  outline: none;
+}
+
+/* Кнопка расчета */
+button {
+  background-color: #00509e;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: bold;
+  width: 100%;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #003366;
+}
+
+/* Кнопки пола */
+.gender-buttons {
+  display: flex;
+  justify-content: center; /* Центрирует кнопки по горизонтали */
+  gap: 20px; /* Отступ между кнопками */
+  margin-bottom: 25px;
+}
+
+.gender-buttons button {
+  padding: 10px 20px; /* Увеличим горизонтальные отступы, чтобы кнопки были более равномерными */
+  background-color: #f0f0f0;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  font-weight: bold;
+  color: #333;
+  transition: all 0.3s ease;
+  text-align: center; /* Текст по центру */
+  white-space: nowrap; /* Чтобы текст не переносился */
+  width: 100px; /* Ширина кнопки */
+  height: 40px; /* Высота кнопки */
+  font-size: 16px; /* Размер текста */
+  padding: 10px; /* Внутренние отступы */
+  
+}
+
+.gender-buttons button.active {
+  background-color: #003366; /* Темно-синий для активной кнопки */
+  color: white;
+  border-color: #003366;
+}
+
+.gender-buttons button:hover {
+  background-color: #364e66;
+}
+
+
+.gender-buttons .active {
+  background-color: #003366;
+  color: white;
+  border-color: #003366;
+}
+
+/* Результаты */
+.macros-result {
+  background-color: #e6f7ff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 25px;
+  text-align: center;
+  font-weight: 600;
+  color: #003366;
+  font-size: 18px;
+}
+
+/* График */
+.macros-chart {
+  margin-top: 30px;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.macros-chart canvas {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap; /* кішкене экранға икемделу үшін */
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.form-row .form-group {
+  flex: 1;
+  min-width: 100px;
+  gap: 0px;
+}
+
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 35px; /* Это добавит пространство между блоками */
+}
+
+.form-group {
+  flex: 1; /* Каждый блок займет одинаковую ширину */
+  margin-bottom: 20px; /* Добавляет отступ снизу для каждой группы */
+}
+
+label {
+  display: block;
+  margin-bottom: 8px; /* Отступ между меткой и полем ввода */
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #003366; /* Темно-синий цвет рамки */
+  font-size: 16px;
+}
+
+input:focus {
+  border-color: #00509e; /* Ярко-синий цвет рамки при фокусе */
+}
+
+
+/* Управляем блоком для уровня активности */
+.activity-level {
+  margin-bottom: 25px; /* Отступ для блока активности */
+}
+
+.activity-level label {
+  margin-bottom: 10px; /* Отступ для метки активности */
+}
+
+.activity-level select {
+  padding: 12px;
+  border: 1px solid #00509e;
+  font-size: 16px;
+}
+
+/* Управляем блоком для цели */
+.goal {
+  margin-bottom: 25px; /* Отступ для блока цели */
+  
+}
+
+.goal label {
+  margin-bottom: 10px; /* Отступ для метки цели */
+}
+
+.goal select {
+  padding: 12px;
+  border: 1px solid #00509e;
+  font-size: 16px;
+}

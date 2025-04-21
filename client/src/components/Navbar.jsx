@@ -53,7 +53,10 @@ const Navbar = () => {
               <li><i className="fas fa-cogs"></i><span>Жаттығу генераторы</span></li>
               <li><i className="fas fa-dumbbell"></i><span>Жеке жаттығулар</span></li>
               <li><i className="fas fa-layer-group"></i><span>Жаттығу комбинациялары</span></li>
-              <li><i className="fas fa-calculator"></i><span>Калория калькуляторы</span></li>
+              <li onClick={() => navigate('/calorie-calculator')}>
+  <i className="fas fa-calculator"></i>
+  <span>Калория калькуляторы</span>
+</li>
               <li>
                 <button className="logout-button" onClick={handleLogout}>
                   <i className="fas fa-sign-out-alt"></i> Выйти
