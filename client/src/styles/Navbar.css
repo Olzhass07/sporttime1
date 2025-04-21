@@ -274,5 +274,18 @@
   }
   
   
-
+  .logout-button {
+    background-color: transparent;
+    color: #ff4d4d; /* красный цвет для кнопки выхода */
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+  }
+  
+  .logout-button:hover {
+    background-color: rgba(255, 77, 77, 0.1); /* подсветка при наведении */
+  }
   
