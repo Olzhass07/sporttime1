@@ -211,3 +211,25 @@ input:focus {
   font-size: 16px;
 }
 
+.calorie-calculator-container {
+  display: flex; /* Устанавливаем Flexbox */
+  justify-content: flex-start; /* Элементы выравниваются слева */
+  align-items: flex-start; /* Выравниваем элементы по верхнему краю */
+  gap: 10px; /* Отступ между изображением и основным контейнером */
+}
+
+.calorie-image {
+  flex: 0 0 300px; /* Фиксированная ширина для изображения */
+  text-align: center; /* Центрируем изображение внутри контейнера */
+}
+
+.calorie-image img {
+  width: 200%; /* Изображение адаптируется под ширину контейнера */
+  height: auto; /* Сохраняем пропорции изображения */
+  border-radius: 8px; /* Скругленные углы (опционально) */
+  margin-top: 110px;
+}
+
+.calorie-calculator {
+  flex: 1; /* Основной контейнер занимает оставшееся пространство */
+}

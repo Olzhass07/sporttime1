@@ -13,6 +13,7 @@ const AppRoutes = () => {
         <Route path="/auth" element={<Authentication />} />
         <Route path="/register" element={<Registration />} /> {/* Маршрут для регистрации */}
         <Route path="/calorie-calculator" element={<CalorieCalculator />} /> {/* Маршрут для калькулятора */}
+        
       </Routes>
     </Router>
   );

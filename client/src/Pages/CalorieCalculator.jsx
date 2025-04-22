@@ -99,100 +99,117 @@ const CalorieCalculator = () => {
   return (
     <>
       <Navbar />
-      <div className="calorie-calculator">
-        <h1>Калория калькуляторы</h1>
-
-        <div className="form-group gender-buttons">
-          <label>Жынысыңыз:</label>
-          <div className="gender-buttons">
-            <button
-              className={gender === 'male' ? 'active' : ''}
-              onClick={() => setGender('male')}
-              type="button"
-            >
-              Ер
-            </button>
-            <button
-              className={gender === 'female' ? 'active' : ''}
-              onClick={() => setGender('female')}
-              type="button"
-            >
-              Әйел
-            </button>
-          </div>
+      <div className="calorie-calculator-container">
+        {/* Блок с изображением */}
+        <div className="calorie-image">
+          {gender === 'male' ? (
+            <img src="/m11.png" alt="Мужчина" />
+          ) : (
+            <img src="/f1.png" alt="Женщина" />
+          )}
         </div>
 
-        <div className="form-row">
-          <div className="form-group">
-            <label>Жасыңыз:</label>
-            <input
-              type="number"
-              value={age}
-              onChange={(e) => setAge(e.target.value)}
-              placeholder="Жасыңызды енгізіңіз"
-            />
+        {/* Основной контейнер */}
+        <div className="calorie-calculator">
+          <h1>Калория калькуляторы</h1>
+
+          <div className="form-group gender-buttons">
+            <label>Жынысыңыз:</label>
+            <div className="gender-buttons">
+              <button
+                className={gender === 'male' ? 'active' : ''}
+                onClick={() => setGender('male')}
+                type="button"
+              >
+                Ер
+              </button>
+              <button
+                className={gender === 'female' ? 'active' : ''}
+                onClick={() => setGender('female')}
+                type="button"
+              >
+                Әйел
+              </button>
+            </div>
           </div>
 
-          <div className="form-group">
-            <label>Салмақ (кг):</label>
-            <input
-              type="number"
-              value={weight}
-              onChange={(e) => setWeight(e.target.value)}
-              placeholder="Салмағыңызды енгізіңіз"
-            />
+          <div className="form-row">
+            <div className="form-group">
+              <label>Жасыңыз:</label>
+              <input
+                type="number"
+                value={age}
+                onChange={(e) => setAge(e.target.value)}
+                placeholder="Жасыңызды енгізіңіз"
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Салмақ (кг):</label>
+              <input
+                type="number"
+                value={weight}
+                onChange={(e) => setWeight(e.target.value)}
+                placeholder="Салмағыңызды енгізіңіз"
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Бой (см):</label>
+              <input
+                type="number"
+                value={height}
+                onChange={(e) => setHeight(e.target.value)}
+                placeholder="Бойыңызды енгізіңіз"
+              />
+            </div>
           </div>
 
-          <div className="form-group">
-            <label>Бой (см):</label>
-            <input
-              type="number"
-              value={height}
-              onChange={(e) => setHeight(e.target.value)}
-              placeholder="Бойыңызды енгізіңіз"
-            />
+          <div className="form-row">
+            <div className="form-group activity-level">
+              <label>Белсенділік деңгейі:</label>
+              <select
+                value={activityLevel}
+                onChange={(e) => setActivityLevel(e.target.value)}
+              >
+                <option value="sedentary">Төмен</option>
+                <option value="light">Жеңіл белсенділік</option>
+                <option value="moderate">Орташа белсенділік</option>
+                <option value="active">Жоғары белсенділік</option>
+                <option value="veryActive">Өте жоғары белсенділік</option>
+              </select>
+            </div>
+
+            <div className="form-group goal">
+              <label>Мақсат:</label>
+              <select
+                value={goal}
+                onChange={(e) => setGoal(e.target.value)}
+              >
+                <option value="maintain">Салмақты сақтау</option>
+                <option value="lose">Салмақ тастау</option>
+                <option value="gain">Салмақ қосу</option>
+              </select>
+            </div>
           </div>
+
+          <button onClick={calculateCalories}>Есептеу</button>
+
+          {calories !== null && (
+            <>
+              <p>
+                Күнделікті қажетті калория:{' '}
+                <strong>{Math.round(calories)} ккал</strong>
+              </p>
+
+              {macros && (
+                <div className="macros-chart">
+                  <Doughnut data={chartData} />
+                </div>
+              )}
+            </>
+          )}
         </div>
-
-        <div className="form-row">
-  <div className="form-group activity-level">
-    <label>Белсенділік деңгейі:</label>
-    <select value={activityLevel} onChange={(e) => setActivityLevel(e.target.value)}>
-      <option value="sedentary">Төмен</option>
-      <option value="light">Жеңіл белсенділік</option>
-      <option value="moderate">Орташа белсенділік</option>
-      <option value="active">Жоғары белсенділік</option>
-      <option value="veryActive">Өте жоғары белсенділік</option>
-    </select>
-  </div>
-
-  <div className="form-group goal">
-    <label>Мақсат:</label>
-    <select value={goal} onChange={(e) => setGoal(e.target.value)}>
-      <option value="maintain">Салмақты сақтау</option>
-      <option value="lose">Салмақ тастау</option>
-      <option value="gain">Салмақ қосу</option>
-    </select>
-  </div>
-</div>
-
-
-        <button onClick={calculateCalories}>Есептеу</button>
-
-        {calories !== null && (
-          <>
-            <p>Күнделікті қажетті калория: <strong>{Math.round(calories)} ккал</strong></p>
-
-         
-
-           
-            {macros && (
-              <div className="macros-chart">
-                <Doughnut data={chartData} />
-              </div>
-            )}
-          </>
-        )}
       </div>
     </>
   );
