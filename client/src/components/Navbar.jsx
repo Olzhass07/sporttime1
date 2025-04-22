@@ -49,25 +49,35 @@ const Navbar = () => {
       {isAuthenticated && (
         <div className={`overlay ${isMenuOpen ? 'visible' : ''}`} onClick={closeMenu}>
           <div className={`sidebar-menu ${isMenuOpen ? 'open' : ''}`} onClick={(e) => e.stopPropagation()}>
-            <ul>
-              <li><i className="fas fa-cogs"></i><span>Жаттығу генераторы</span></li>
-              <li><i className="fas fa-dumbbell"></i><span>Жеке жаттығулар</span></li>
-              <li><i className="fas fa-layer-group"></i><span>Жаттығу комбинациялары</span></li>
-              <li onClick={() => navigate('/calorie-calculator')}>
-  <i className="fas fa-calculator"></i>
-  <span>Калория калькуляторы</span>
-</li>
-              <li>
-                <button className="logout-button" onClick={handleLogout}>
-                  <i className="fas fa-sign-out-alt"></i> Выйти
+          <ul>
+            <li onClick={() => navigate('/generator')}>
+              <i className="fas fa-cogs"></i>
+              <span>Жаттығу генераторы</span>
+            </li>
+            <li onClick={() => navigate('/custom-workouts')}>
+              <i className="fas fa-dumbbell"></i>
+              <span>Жеке жаттығулар</span>
+            </li>
+            <li onClick={() => navigate('/combinations')}>
+              <i className="fas fa-layer-group"></i>
+              <span>Жаттығу комбинациялары</span>
+            </li>
+            <li onClick={() => navigate('/calorie-calculator')}>
+              <i className="fas fa-calculator"></i>
+              <span>Калория калькуляторы</span>
+            </li>
+            <li>
+              <button className="logout-button" onClick={handleLogout}>
+                <i className="fas fa-sign-out-alt"></i>
+                <span>Выйти</span>
                 </button>
-              </li>
-            </ul>
-          </div>
+            </li>
+          </ul>
         </div>
-      )}
+      </div>
+    )}
     </>
-  );
+    );
 };
 
 export default Navbar;
