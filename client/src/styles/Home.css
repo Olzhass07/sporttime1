@@ -39,7 +39,9 @@
   justify-content: center;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
-  margin: 0 0 0.5rem -615px; /* Отступ слева и небольшой отступ снизу */
+  align-self: flex-start;
+  margin-left: 2rem; /* или сколько тебе нужно */
+
   gap: 0.75rem; /* Отступ между текстом и иконкой */
 }
 
