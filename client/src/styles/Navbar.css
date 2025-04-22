@@ -40,16 +40,23 @@
 .navbar-icon {
   width: 45px;
   height: 45px;
-  border-radius: 50%; /* Это создаст круг */
+  border-radius: 50%;
   background-color: #f3f4f6;
-  padding: 0; /* Убираем padding, чтобы изображение не было с отступами */
+  padding: 0;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  object-fit: cover; /* Это обрежет изображение по кругу, сохраняя пропорции */
-  object-position: center; /* Можно смещать изображение внутри круга */
+  object-fit: cover;
+  object-position: center;
+}
+
+/* 🔁 Анимация при наведении */
+.navbar-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background-color: #e5e7eb;
 }
 
 /* Выезжающее меню */
