@@ -1,23 +1,23 @@
-/* Navbar.css */
+/* --- NAVBAR --- */
 
 .navbar {
-    background-color: white;
-    padding: 2rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed; /* фиксируем навбар сверху */
-    top: 0;
-    left: 0;
-    width: 100%; /* на весь экран */
-    z-index: 100;
-    font-family: montserrat;
+  background-color: white;
+  padding: 2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  font-family: montserrat;
 }
 
 .navbar-logo {
   display: flex;
   align-items: center;
-  gap: 1rem; /* было 0.5rem — увеличили отступ между иконкой и текстом */
+  gap: 1rem;
   font-size: 1.8rem;
   font-weight: 1000;
   color: black;
@@ -25,16 +25,15 @@
 }
 
 .navbar-logo-img {
-  width: 100px; /* Уменьшаем ширину изображения */
-  height: 45px; /* Уменьшаем высоту изображения */
+  width: 100px;
+  height: 45px;
 }
 
 .navbar-icons-container {
   display: flex;
-  gap: 16px; /* Отступ между иконками */
-  margin-right: 0px; /* Отступ от правого края */
-  margin-left: 850px; /* Отступ от левого края */
-  margin-top: -10px; /* уменьшили отступ сверху */
+  gap: 16px;
+  margin-left: 850px;
+  margin-top: -10px;
 }
 
 .navbar-icon {
@@ -42,253 +41,224 @@
   height: 45px;
   border-radius: 50%;
   background-color: #f3f4f6;
-  padding: 0;
-  cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  object-fit: cover;
-  object-position: center;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
 }
 
-/* 🔁 Анимация при наведении */
 .navbar-icon:hover {
   transform: scale(1.1);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   background-color: #e5e7eb;
 }
 
-/* Выезжающее меню */
+/* --- PROFILE MENU --- */
+
 .profile-menu {
-    position: absolute; /* Меню будет позиционироваться относительно родителя */
-    top: 60px; /* Расположение под Navbar */
-    right: 70px; /* Расположение справа */
-    width: 200px; /* Ширина меню */
-    background-color: white; /* Фон меню */
-    border: 1px solid #e5e7eb; /* Граница */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень */
-    border-radius: 8px; /* Скругление углов */
-    padding: 1rem;
-    display: none; /* Скрываем меню по умолчанию */
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    z-index: 200; /* Поверх других элементов */
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-    opacity: 0; /* Прозрачность по умолчанию */
-    transform: translateY(-10px); /* Сдвиг вверх по умолчанию */
+  position: absolute;
+  top: 60px;
+  right: 70px;
+  width: 200px;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 200;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 .profile-menu.open {
-    display: flex; /* Показываем меню */
-    opacity: 1; /* Делаем меню видимым */
-    transform: translateY(0); /* Возвращаем меню в исходное положение */
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .menu-item {
-    width: 100%;
-    padding: 0.5rem;
-    background: none;
-    border: none;
-    text-align: center;
-    font-size: 1rem;
-    cursor: pointer;
-    color: #1f2937; /* text-gray-800 */
+  width: 100%;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  text-align: center;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #1f2937;
 }
 
 .menu-item:hover {
-    background-color: #f3f4f6; /* hover:bg-gray-100 */
-    border-radius: 4px;
-    
+  background-color: #f3f4f6;
+  border-radius: 4px;
 }
 
+/* --- SIDEBAR MENU --- */
+
 .sidebar-menu {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 250px;
-    height: 100%;
-    background-color: #fff;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    z-index: 1000;
-    transform: translateX(0);
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .sidebar-menu ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .sidebar-menu li {
-    margin: 15px 0;
-    cursor: pointer;
-  }
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 350px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  z-index: 1000;
+  transition: right 0.3s ease-in-out;
+}
 
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-  }
-  
-  .sidebar-menu {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 250px;
-    height: 100%;
-    background-color: #fff;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    z-index: 1000;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .sidebar-menu ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .sidebar-menu li {
-    margin: 15px 0;
-    cursor: pointer;
-  }
+.sidebar-menu.open {
+  right: 0;
+}
 
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-  }
-  
-  .overlay.visible {
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  .sidebar-menu {
-    position: fixed;
-    top: 0;
-    right: -250px; /* Начальное положение за пределами экрана */
-    width: 250px;
-    height: 100%;
-    background-color: #fff;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    z-index: 1000;
-    transition: right 0.3s ease-in-out; /* Анимация для плавного появления */
-  }
-  
-  .sidebar-menu.open {
-    right: 0; /* Конечное положение меню */
-  }
-  
-  .sidebar-menu ul {
-    list-style: none;
-    padding: 170px 0 0; /* Отступ сверху */
-    margin: 0;
-    display: grid;
-    grid-template-columns: auto 1fr; /* Две колонки: первая для иконок, вторая для текста */
-    gap: 28px 9px; /* Увеличиваем расстояние между строками и колонками */
-  }
-  
-  .sidebar-menu li {
-    display: contents; /* Убираем обертку для элементов внутри grid */
-  }
-  
-  .sidebar-menu li i {
-    font-size: 1.5rem; /* Размер иконки */
-    color: #6b7280; /* Цвет иконки (серый) */
-    justify-self: center; /* Центрируем иконки по горизонтали */
-    transition: color 0.3s ease; /* Плавное изменение цвета */
-  }
-  
-  .sidebar-menu li span {
-    font-size: 1.1rem; /* Увеличиваем размер текста */
-    font-weight: normal; /* Убираем жирное начертание */
-    color: #1f2937; /* Основной цвет текста */
-    align-self: center; /* Центрируем текст по вертикали */
-    transition: color 0.3s ease; /* Плавное изменение цвета */
-  }
-  
-  
-  .sidebar-menu li:hover i {
-    color: #bec3ca; /* Цвет иконки при наведении (синий) */
-  }
-  
-  .sidebar-menu li:hover span {
-    color: #bec3ca; /* Цвет текста при наведении (синий) */
-  }
+.sidebar-menu ul {
+  list-style: none;
+  padding-top: 140px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
 
+.sidebar-menu li,
+.logout-button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.1rem;
+  color: #374151;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  justify-content: flex-start; /* ✅ смещаем влево */
+  text-align: center;             /* ✅ текст по центру */
+}
 
-  .has-submenu {
-    position: relative;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .submenu-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .submenu {
-    list-style: none;
-    padding-left: 20px;
-    margin-top: 8px;
-    position: absolute;
-    top: 100%; /* Размещаем подменю сразу ниже пункта */
-    left: 0;
-    width: 100%;
-    background-color: #333;
-    border-radius: 4px;
-    z-index: 10;
-  }
-  
-  .submenu li {
-    padding: 6px 0;
-    color: #fff;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-  
-  .submenu li:hover {
-    color: #ccc;
-  }
-  
-  .submenu-arrow {
-    font-size: 0.8em;
-    color: #fff;
-    margin-left: 10px;
-  }
-  
-  
-  .logout-button {
-    background-color: transparent;
-    color: #ff4d4d; /* красный цвет для кнопки выхода */
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    width: 100%;
-    text-align: left;
-  }
-  
-  .logout-button:hover {
-    background-color: rgba(255, 77, 77, 0.1); /* подсветка при наведении */
-  }
-  
+.sidebar-menu li:hover,
+.logout-button:hover {
+  background-color: #f3f4f6;
+  color: #111827;
+}
+
+.sidebar-menu li i,
+.logout-button i {
+  font-size: 1.3rem;
+  color: #6b7280;
+  transition: color 0.3s ease;
+}
+
+.sidebar-menu li:hover i,
+.logout-button:hover i {
+  color: #111827;
+}
+
+.sidebar-menu li span {
+  font-size: 1.1rem;
+  color: #1f2937;
+  transition: color 0.3s ease;
+  white-space: nowrap; /* 🔥 запрет переноса */
+}
+
+.sidebar-menu li:hover span {
+  color: #111827;
+}
+
+/* --- SUBMENU (если используешь) --- */
+
+.has-submenu {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.submenu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.submenu {
+  list-style: none;
+  padding-left: 20px;
+  margin-top: 8px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  border-radius: 4px;
+  z-index: 10;
+}
+
+.submenu li {
+  padding: 6px 0;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.submenu li:hover {
+  color: #ccc;
+}
+
+.submenu-arrow {
+  font-size: 0.8em;
+  color: #fff;
+  margin-left: 10px;
+}
+
+/* --- OVERLAY --- */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.overlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* --- LOGOUT BUTTON --- */
+
+.logout-button {
+  background-color: transparent;
+  color: #ff4d4d;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.logout-button:hover {
+  background-color: rgba(255, 77, 77, 0.1);
+}
+
+/* Сделаем текст менее жирным во всей боковой менюшке */
+.sidebar-menu li,
+.sidebar-menu li span,
+.logout-button,
+.logout-button span {
+  font-weight: 400; /* 👈 Установим более легкий вес для всего текста */
+}
