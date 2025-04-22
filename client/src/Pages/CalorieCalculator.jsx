@@ -82,7 +82,7 @@ const CalorieCalculator = () => {
   };
 
   const chartData = {
-    labels: ['Белки (ккал)', 'Жиры (ккал)', 'Көмірсулар (ккал)'],
+    labels: ['Ақуыздар (ккал)', 'Майлар (ккал)', 'Көмірсулар (ккал)'],
     datasets: [
       {
         data: [
@@ -158,7 +158,7 @@ const CalorieCalculator = () => {
   <div className="form-group activity-level">
     <label>Белсенділік деңгейі:</label>
     <select value={activityLevel} onChange={(e) => setActivityLevel(e.target.value)}>
-      <option value="sedentary">Төмен (офис жұмысы)</option>
+      <option value="sedentary">Төмен</option>
       <option value="light">Жеңіл белсенділік</option>
       <option value="moderate">Орташа белсенділік</option>
       <option value="active">Жоғары белсенділік</option>
