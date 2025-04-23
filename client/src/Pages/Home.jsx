@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar.jsx";
 import useAuth from "../hooks/useAuth"; // добавляем хук
 import "../styles/Home.css";
+import BenefitsScroll from "../components/BenefitsScroll.jsx"; // Импортируем компонент BenefitsScroll
+import Footer from "../components/Footer.jsx"; // Импортируем Footer
 
 const Home = () => {
   const navigate = useNavigate();
@@ -27,9 +29,9 @@ const Home = () => {
         </div>
 
         <div>
-        <button className="home-button" onClick={handleStartWorkout}>
-          Жаттығуды бастау!
-          <span className="arrow-icon">→</span>
+          <button className="home-button" onClick={handleStartWorkout}>
+            Жаттығуды бастау!
+            <span className="arrow-icon">→</span>
           </button>
         </div>
 
@@ -39,6 +41,8 @@ const Home = () => {
             className="home-image"
             src="./home.jpg"
           />
+          <BenefitsScroll />
+          <Footer />
         </div>
       </main>
     </div>

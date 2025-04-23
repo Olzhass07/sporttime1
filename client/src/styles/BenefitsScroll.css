@@ -1,0 +1,69 @@
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scroll-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.benefit-card {
+  min-width: 360px; /* увеличили ширину */
+  max-width: 420px;
+  height: 460px; /* увеличили высоту */
+  background: linear-gradient(135deg, #F5F5F5, #F5F5F5);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.203);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.benefit-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: contain; /* Показывает всю картинку, с отступами если нужно */
+  border-radius: 20px 20px 0 0;
+}
+
+.benefit-card-content {
+  padding: 20px;
+}
+
+.benefit-card-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #f39c12;
+}
+
+.benefit-card-description {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .scroll-container {
+    gap: 15px;
+  }
+
+  .benefit-card {
+    min-width: 280px;
+  }
+}
