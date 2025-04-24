@@ -10,14 +10,14 @@ export default function Footer() {
         <div className="footer-section">
           <h2>Sport Time</h2>
           <p>
-            Твоя платформа для достижения фитнес-целей. Создавай планы,
-            отслеживай прогресс и добивайся результата вместе с нами.
+            Фитнес-мақсаттарға жету үшін сенің платформаң. Жоспарлар құрып, 
+            прогрессті бақылап, бізбен бірге нәтижеге жет
           </p>
         </div>
 
         {/* Контакты */}
         <div className="footer-section">
-          <h2>Контакты</h2>
+          <h2>Байланыс</h2>
           <ul>
             <li className="flex items-center gap-2">
               <Mail size={16} /> support@sporttime.kz
@@ -35,19 +35,18 @@ export default function Footer() {
         <div className="footer-section">
           <h2>Навигация</h2>
           <ul>
-            <li><a href="#">Главная</a></li>
-            <li><a href="#">О нас</a></li>
-            <li><a href="#">Контакты</a></li>
-            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Басты бет</a></li>
+            <li><a href="#">Біз туралы</a></li>
+            <li><a href="#">Байланыс</a></li>
           </ul>
         </div>
       </div>
 
       {/* Линия и копирайт */}
       <div className="footer-bottom">
-        <p>© {new Date().getFullYear()} Sport Time. Все права защищены.</p>
+        <p>© {new Date().getFullYear()} Sport Time. Барлық құқықтар қорғалған.</p>
         <p>
-          <a href="#">Политика конфиденциальности</a> | <a href="#">Условия использования</a>
+          <a href="#">Қауіпсіздік политикасы</a> | <a href="#">Пайдалану шарттары</a>
         </p>
       </div>
     </footer>
