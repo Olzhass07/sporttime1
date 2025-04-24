@@ -6,6 +6,11 @@ import Registration from '../Pages/Registration'; // Импорт страниц
 import CalorieCalculator from '../Pages/CalorieCalculator'; // Импорт страницы "Калория калькулятор"
 import PrivacyPolicy from '../Pages/PrivacyPolicy'; // Импорт страницы "Политика конфиденциальности"
 import TrainingPrograms from "../Pages/TrainingPrograms"; 
+import Registration from '../Pages/Registration';
+import CalorieCalculator from '../Pages/CalorieCalculator';
+import PrivacyPolicy from '../Pages/PrivacyPolicy';
+import TermsOfUse from '../Pages/TermsOfUse';
+
 
 const AppRoutes = () => {
   return (
@@ -13,10 +18,12 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/auth" element={<Authentication />} />
-        <Route path="/register" element={<Registration />} /> {/* Маршрут для регистрации */}
-        <Route path="/calorie-calculator" element={<CalorieCalculator />} /> {/* Маршрут для калькулятора */}
+        <Route path="/register" element={<Registration />} />
+        <Route path="/calorie-calculator" element={<CalorieCalculator />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/workout" element={<TrainingPrograms />} />
+        <Route path="/terms-of-use" element={<TermsOfUse />} />
+
       </Routes>
     </Router>
   );

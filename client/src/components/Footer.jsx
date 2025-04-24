@@ -29,7 +29,7 @@ export default function Footer() {
               <Phone size={16} /> +7 (708) 599-02-45
             </li>
             <li className="flex items-center gap-2">
-              <MapPin size={16} /> Астана, ​Проспект Мангилик Ел, С1 Astana IT University
+              <MapPin size={16} /> Астана, ​Мәңгілік Ел даңғылы, С1 Astana IT University
             </li>
           </ul>
           </div>
@@ -37,13 +37,16 @@ export default function Footer() {
 
 
         <div className="footer-bottom">
-        <p>© {new Date().getFullYear()} Sport Time. Все права защищены.</p>
-        <p>
-        <Link to="/privacy-policy" className="text-blue-500 hover:underline">
-      Политика конфиденциальности
-    </Link> | <a href="#">Условия использования</a>
-        </p>
-      </div>
+          <p>© {new Date().getFullYear()} Sport Time. Барлық құқықтар қорғалған.</p>
+          <p>
+            <Link to="/privacy-policy" className="text-blue-500 hover:underline">
+            Құпиялылық саясаты
+            </Link> |{" "}
+            <Link to="/terms-of-use" className="text-blue-500 hover:underline">
+            Пайдалану шарттары
+            </Link>
+          </p>
+        </div>
     </footer>
   );
 }
