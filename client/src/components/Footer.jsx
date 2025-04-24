@@ -1,6 +1,9 @@
 import React from "react";
 import { Mail, Phone, MapPin } from "lucide-react"; // Импортируем иконки
 import "../styles/Footer.css"; // Импортируем стили для футера
+import { Link } from "react-router-dom"; // This imports the Link component
+
+
 
 export default function Footer() {
   return (
@@ -20,34 +23,24 @@ export default function Footer() {
           <h2>Контакты</h2>
           <ul>
             <li className="flex items-center gap-2">
-              <Mail size={16} /> support@sporttime.kz
+              <Mail size={16} /> bolatulyolzas@gmail.com
             </li>
             <li className="flex items-center gap-2">
-              <Phone size={16} /> +7 (707) 123-45-67
+              <Phone size={16} /> +7 (708) 599-02-45
             </li>
             <li className="flex items-center gap-2">
-              <MapPin size={16} /> г. Астана, IT колледж
+              <MapPin size={16} /> Астана, ​Проспект Мангилик Ел, С1 Astana IT University
             </li>
           </ul>
+          </div>
         </div>
 
-        {/* Навигация */}
-        <div className="footer-section">
-          <h2>Навигация</h2>
-          <ul>
-            <li><a href="#">Главная</a></li>
-            <li><a href="#">О нас</a></li>
-            <li><a href="#">Контакты</a></li>
-            <li><a href="#">FAQ</a></li>
-          </ul>
-        </div>
-      </div>
-
-      {/* Линия и копирайт */}
-      <div className="footer-bottom">
+        <div className="footer-bottom">
         <p>© {new Date().getFullYear()} Sport Time. Все права защищены.</p>
         <p>
-          <a href="#">Политика конфиденциальности</a> | <a href="#">Условия использования</a>
+        <Link to="/privacy-policy" className="text-blue-500 hover:underline">
+      Политика конфиденциальности
+    </Link> | <a href="#">Условия использования</a>
         </p>
       </div>
     </footer>

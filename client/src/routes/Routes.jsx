@@ -4,6 +4,7 @@ import Home from '../Pages/Home';
 import Authentication from '../Pages/Authentication';
 import Registration from '../Pages/Registration'; // Импорт страницы регистрации
 import CalorieCalculator from '../Pages/CalorieCalculator'; // Импорт страницы "Калория калькулятор"
+import PrivacyPolicy from '../Pages/PrivacyPolicy'; // Импорт страницы "Политика конфиденциальности"
 
 const AppRoutes = () => {
   return (
@@ -13,7 +14,7 @@ const AppRoutes = () => {
         <Route path="/auth" element={<Authentication />} />
         <Route path="/register" element={<Registration />} /> {/* Маршрут для регистрации */}
         <Route path="/calorie-calculator" element={<CalorieCalculator />} /> {/* Маршрут для калькулятора */}
-        
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Routes>
     </Router>
   );

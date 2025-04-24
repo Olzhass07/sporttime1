@@ -1,0 +1,55 @@
+/* Общие стили для страницы политики конфиденциальности */
+.privacy-policy-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px;
+    color: #333;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #1a202c;
+  }
+  
+  .updated-date {
+    font-size: 1rem;
+    color: #6b7280;
+    margin-bottom: 30px;
+  }
+  
+  .intro-text {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 40px;
+    color: #1a202c;
+  }
+  
+  .list-items {
+    margin-left: 20px;
+    list-style-type: disc;
+    margin-bottom: 20px;
+  }
+  
+  .content-text {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  
+  .contact-link {
+    color: #3b82f6;
+    text-decoration: underline;
+  }
+  
+  .contact-link:hover {
+    color: #2563eb;
+  }
+  
