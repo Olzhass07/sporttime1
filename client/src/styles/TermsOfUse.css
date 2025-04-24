@@ -1,4 +1,4 @@
-.privacy-policy-container {
+.terms-container {
   max-width: 800px;
   margin: 0 auto;
   padding: 40px 20px;
@@ -11,7 +11,7 @@
 .title {
   font-size: 32px;
   margin-bottom: 20px;
-  font-weight: 700; /* Очень жирный заголовок */
+  font-weight: 700;
   text-align: center;
   color: #111;
 }
@@ -21,14 +21,14 @@
   color: #666;
   margin-bottom: 30px;
   text-align: center;
-  font-weight: 475;
+  font-weight: 400;
 }
 
 .intro-text,
 .content-text {
   margin-bottom: 20px;
   font-size: 16px;
-  font-weight: 500; /* Основной текст обычный */
+  font-weight: 400;
 }
 
 .section-title {
@@ -36,14 +36,14 @@
   margin-top: 30px;
   margin-bottom: 12px;
   color: #111;
-  font-weight: 600; /* Подзаголовки — полужирные */
+  font-weight: 600;
 }
 
 .list-items {
   padding-left: 20px;
   margin-bottom: 20px;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .list-items li {

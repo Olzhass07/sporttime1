@@ -2,8 +2,8 @@
   background-color: #222;
   color: #f1f1f1;
   padding: 60px 20px;
-  font-family: 'Arial', sans-serif;
-  border-top: 5px solid #f39c12; /* Линия сверху */
+  font-family: 'Montserrat', sans-serif;
+  border-top: 5px solid #f39c12;
 }
 
 .footer-container {
@@ -24,42 +24,51 @@
 .footer-section h2 {
   font-size: 20px;
   margin-bottom: 15px;
-  font-weight: 600;
-  color: #f39c12; /* Золотой цвет */
+  font-weight: 700; /* Заголовки — жирные */
+  color: #f39c12;
   text-transform: uppercase;
 }
 
 .footer-section p,
 .footer-section li {
   font-size: 15px;
+  font-weight: 500; /* Обычный текст — чуть легче */
   color: #bbb;
   line-height: 1.6;
   margin-bottom: 10px;
+}
+
+.footer-section li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .footer-section a {
   color: #bbb;
   text-decoration: none;
   transition: color 0.3s ease;
+  font-weight: 500;
 }
 
 .footer-section a:hover {
-  color: #f39c12; /* Подсветка при наведении */
+  color: #f39c12;
 }
 
 .footer-bottom {
   text-align: center;
-  font-size: 14px;
+  font-size: 15px;
   color: #999;
   margin-top: 40px;
   border-top: 1px solid #444;
   padding-top: 20px;
+  font-weight: 600;
 }
 
 .footer-bottom a {
   color: #f39c12;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600; /* Важные ссылки — жирнее */
 }
 
 .footer-bottom a:hover {
