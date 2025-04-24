@@ -13,14 +13,14 @@ export default function Footer() {
         <div className="footer-section">
           <h2>Sport Time</h2>
           <p>
-            Твоя платформа для достижения фитнес-целей. Создавай планы,
-            отслеживай прогресс и добивайся результата вместе с нами.
+            Фитнес-мақсаттарға жету үшін сенің платформаң. Жоспарлар құрып, 
+            прогрессті бақылап, бізбен бірге нәтижеге жет
           </p>
         </div>
 
         {/* Контакты */}
         <div className="footer-section">
-          <h2>Контакты</h2>
+          <h2>Байланыс</h2>
           <ul>
             <li className="flex items-center gap-2">
               <Mail size={16} /> bolatulyolzas@gmail.com
@@ -34,6 +34,7 @@ export default function Footer() {
           </ul>
           </div>
         </div>
+
 
         <div className="footer-bottom">
         <p>© {new Date().getFullYear()} Sport Time. Все права защищены.</p>
