@@ -1,10 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar.jsx";
+
 import useAuth from "../hooks/useAuth"; // добавляем хук
 import "../styles/Home.css";
 import BenefitsScroll from "../components/BenefitsScroll.jsx"; // Импортируем компонент BenefitsScroll
 import Footer from "../components/Footer.jsx"; // Импортируем Footer
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
