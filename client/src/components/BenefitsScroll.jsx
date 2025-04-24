@@ -24,8 +24,8 @@ const benefits = [
   },
   {
     image: "/public/Habits.png",
-    title: "Формирование привычки",
-    text: "Занятия по расписанию помогают встроить фитнес в твою жизнь.",
+    title: "Қалыптасқан әдет",
+    text: "Кесте бойынша жаттығу фитнесті өмір салтыңызға айналдыруға көмектеседі.",
   },
   {
     image: "/public/Progress.png",
@@ -47,7 +47,7 @@ export default function BenefitsScroll() {
 
   return (
     <div className="p-6 bg-gray-100">
-      <h2 className="text-2xl font-bold mb-4">Почему тренироваться с нами</h2>
+      <h2 className="text-2xl font-bold mb-4">Бізбен жаттығудың артықшылықтары</h2>
 
       {/* ОБЁРТКА ТОЛЬКО ВОКРУГ scroll-container */}
       <div className="scroll-wrapper">
