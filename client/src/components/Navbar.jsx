@@ -58,7 +58,7 @@ const Navbar = () => {
               <i className="fas fa-dumbbell"></i>
               <span>Жеке жаттығулар</span>
             </li>
-            <li onClick={() => navigate('/combinations')}>
+            <li onClick={() => navigate('/workout')}>
               <i className="fas fa-layer-group"></i>
               <span>Жаттығу комбинациялары</span>
             </li>
