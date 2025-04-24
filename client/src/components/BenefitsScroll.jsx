@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import '../styles/BenefitsScroll.css';
 
 const benefits = [
@@ -35,19 +35,36 @@ const benefits = [
 ];
 
 export default function BenefitsScroll() {
+  const scrollRef = useRef(null);
+
+  const scroll = (direction) => {
+    const container = scrollRef.current;
+    const scrollAmount = 400;
+    if (container) {
+      container.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="p-6 bg-gray-100">
-      <h2 className="text-2xl font-bold mb-4"> Почему тренироваться с нами</h2>
-      <div className="scroll-container scrollbar-hide">
-        {benefits.map((b, index) => (
-          <div key={index} className="benefit-card">
-            <img src={b.image} alt={b.title} className="w-full h-32 object-cover" />
-            <div className="benefit-card-content">
-              <h3 className="benefit-card-title">{b.title}</h3>
-              <p className="benefit-card-description">{b.text}</p>
+      <h2 className="text-2xl font-bold mb-4">Почему тренироваться с нами</h2>
+
+      {/* ОБЁРТКА ТОЛЬКО ВОКРУГ scroll-container */}
+      <div className="scroll-wrapper">
+        <div className="arrow left" onClick={() => scroll('left')}>&lt;</div>
+        <div className="arrow right" onClick={() => scroll('right')}>&gt;</div>
+
+        <div className="scroll-container scrollbar-hide" ref={scrollRef}>
+          {benefits.map((b, index) => (
+            <div key={index} className="benefit-card">
+              <img src={b.image} alt={b.title} className="w-full h-32 object-cover" />
+              <div className="benefit-card-content">
+                <h3 className="benefit-card-title">{b.title}</h3>
+                <p className="benefit-card-description">{b.text}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
