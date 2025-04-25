@@ -1,0 +1,82 @@
+*{
+font-family: montserrat, sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.training-programs-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 120px;
+    padding: 40px 20px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .programs-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #222;
+  }
+  
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    
+  }
+  
+  .program-card {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .program-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  }
+  
+  .program-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .program-title {
+    font-size: 1.5rem;
+    margin: 20px;
+    color: #333;
+  }
+  
+  .program-description {
+    font-size: 1rem;
+    margin: 0 20px 20px;
+    color: #666;
+    flex-grow: 1;
+  }
+  
+  .program-button {
+    margin: 0 -3px 30px;
+    padding: 12px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 300px;
+    align-self: center;
+    
+  }
+  
+  .program-button:hover {
+    background-color: #0056b3;
+  }
+  
