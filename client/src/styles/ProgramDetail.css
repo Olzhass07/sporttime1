@@ -1,0 +1,39 @@
+.program-detail-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 24px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+  
+  .program-detail-container h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .program-detail-container p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    color: #555;
+  }
+  
+  .program-detail-container h2 {
+    font-size: 24px;
+    margin-bottom: 12px;
+    color: #444;
+  }
+  
+  .program-detail-container ul {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  
+  .program-detail-container li {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+  }  
