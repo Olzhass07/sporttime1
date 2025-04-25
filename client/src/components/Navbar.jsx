@@ -60,7 +60,7 @@ const Navbar = () => {
             </li>
             <li onClick={() => navigate('/workout')}>
               <i className="fas fa-layer-group"></i>
-              <span>Жаттығу комбинациялары</span>
+              <span>Жаттығу программалары</span>
             </li>
             <li onClick={() => navigate('/calorie-calculator')}>
               <i className="fas fa-calculator"></i>
