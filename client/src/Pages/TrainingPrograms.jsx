@@ -1,21 +1,37 @@
 import React from "react";
 import "../styles/TrainingPrograms.css";
+import Navbar from "../components/Navbar";
 
 
 const programs = [
   {
-    title: "Сила и масса",
-    description: "Программа для увеличения мышечной массы и силы.",
+    title: "Программа для набора массы (Hypertrophy Training)",
+    description: "Увеличение мышечной массы.",
+    image: "../public/massgain.jpg"
+  },
+  {
+    title: "Программа для сжигания жира (Fat Loss)",
+    description: "Снижение жировой массы и улучшение общей физической формы.",
+    image: "../public/losefat.jpg"
+  },
+  {
+    title: "Программа для улучшения силы (Strength Training)",
+    description: "Развитие общей физической формы и подвижности.",
+    image: "/images/functional.jpg"
+  },
+  {
+    title: "Программа для улучшения выносливости (Endurance Training)",
+    description: "Повышение общей выносливости и кардио-формы",
     image: "/images/mass.jpg"
   },
   {
-    title: "Жиросжигание",
-    description: "Сжигание жира и улучшение выносливости.",
+    title: "Программа для улучшения гибкости (Flexibility Training)",
+    description: "Повышение гибкости и подвижности.",
     image: "/images/fatburn.jpg"
   },
   {
-    title: "Функциональные тренировки",
-    description: "Развитие общей физической формы и подвижности.",
+    title: "Программа для реабилитации (Rehabilitation Training)",
+    description: "Легкие упражнения на укрепление мышц и восстановление подвижности.",
     image: "/images/functional.jpg"
   }
 ];
@@ -23,6 +39,7 @@ const programs = [
 export default function TrainingPrograms() {
   return (
     <div className="training-programs-container">
+      <Navbar/>
       <h1 className="programs-title">Программы тренировок</h1>
       <div className="cards-grid">
         {programs.map((program, index) => (
