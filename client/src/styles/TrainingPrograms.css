@@ -79,4 +79,26 @@ font-family: montserrat, sans-serif;
   .program-button:hover {
     background-color: #0056b3;
   }
-  
+
+.heart-icon {
+  font-size: 1.5rem;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.2s ease;
+  margin-bottom: 10px; /* Отступ снизу для разделения с кнопкой */
+}
+
+.heart-icon.active {
+  color: red;
+}
+
+.heart-icon:hover {
+  transform: scale(1.2);
+}
+
+.program-actions {
+  display: flex;
+  flex-direction: column; /* Расположить элементы вертикально */
+  align-items: center; /* Выравнивание по центру */
+  justify-content: center;
+}
