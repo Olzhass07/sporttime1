@@ -1,0 +1,169 @@
+/* Общий контейнер */
+.authContainer {
+  height: 100vh;
+  background: url('../../public/bg_on_log_reg.jpg') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Контейнер для формы */
+.authBox {
+  position: relative;
+  background-color: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  justify-content: center;
+}
+
+/* Логотип или изображение */
+.authImage {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.authPhoto {
+  width: 100px;
+  height: 80px;
+  object-fit: cover;
+}
+
+/* Заголовок формы */
+.authTitle {
+  font-size: 24px;
+  color: #0a192f;
+  margin-bottom: 30px;
+}
+
+/* Подзаголовок, если нужно */
+.authSubtitle {
+  color: #4b5563;
+  margin-top: 20px; /* ДОБАВИЛИ отступ сверху */
+  margin-bottom: 0px;
+}
+
+/* Формы */
+.authForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.authLabel {
+  font-size: 14px;
+  text-align: left;
+  color: #374151;
+  margin-bottom: 4px;
+}
+
+/* Инпуты */
+.authInput {
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.authInput:focus {
+  border-color: #3b82f6;
+}
+
+/* Контейнер для пароля с кнопкой */
+.passwordContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.authInput {
+  flex: 1;
+}
+
+.togglePassword {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #203d91;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0;
+}
+
+/* Ошибка */
+.authError {
+  color: red;
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+/* Кнопка отправки */
+.authButton {
+  background-color: #3b82f6;
+  color: #ffffff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.authButton:hover {
+  background-color: #2563eb;
+}
+
+/* Ссылка на вход */
+.authLink {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.authLink:hover {
+  text-decoration: underline;
+}
+
+/* Стрелка для возврата */
+.backArrow {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 20px;
+  color: #374151;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  margin: 0 0 0 10px;
+}
+
+.backArrow:hover {
+  color: #1f2937;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* маленький отступ между label и input */
+}
+
+.eyeIcon {
+  position: absolute;
+  right: 12px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #6b7280;
+  user-select: none;
+}
+
+.eyeIcon:hover {
+  color: #374151;
+}

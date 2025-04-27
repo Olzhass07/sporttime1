@@ -1,104 +1,104 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useAuth } from '../context/AuthContext.jsx';  // импортируем хук useAuth
-import '../styles/Authentication.css';
+import { useAuth } from '../context/AuthContext.jsx';
+import styles from '../styles/Authentication.module.css';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Authentication = () => {
   const navigate = useNavigate();
-  const { login } = useAuth();  // доступ к методу login из контекста авторизации
+  const { login } = useAuth();
 
-  // Состояния для email, password и ошибки
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false); // <-- ДОБАВИЛИ
   const [error, setError] = useState('');
 
   const goToRegister = () => {
-    navigate('/register'); // Переход на страницу регистрации
+    navigate('/register');
   };
 
   const goToHome = () => {
-    navigate('/'); // Переход на главную страницу
+    navigate('/');
   };
 
-  // Обработчик отправки формы
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // Отправляем POST-запрос для авторизации
       const response = await axios.post('http://localhost:5000/auth/login', { email, password });
 
-      // Если авторизация успешна, сохраняем токен и обновляем состояние
       if (response.status === 200) {
-        login(response.data.token);  // вызываем login из контекста с полученным токеном
-        navigate('/');  // Переход на главную страницу (или на страницу, где меню и профиль активируются)
+        login(response.data.token);
+        navigate('/');
       }
     } catch (err) {
-      // Если ошибка (например, неверные данные), показываем сообщение
       setError('Неверный email или пароль');
     }
   };
 
   return (
-    <div className="auth-container" align="center">
-      <div className="auth-box">
-        {/* Стрелка для возврата */}
-        <div className="back-arrow" onClick={goToHome}>
-          <i className="fas fa-arrow-left"></i> {/* Иконка стрелки */}
+    <div className={styles.authContainer}>
+      <div className={styles.authBox}>
+        <div className={styles.backArrow} onClick={goToHome}>
+          <i className="fas fa-arrow-left"></i>
         </div>
 
-        <img
-          src="../icon.jpg"
-          alt="SportTime logo"
-          className="auth-logo"
-        />
-        <h1 className="auth-title">Кіру</h1>
-        <p className="auth-subtitle">
+        <img src="../icon.jpg" alt="SportTime logo" className={styles.authLogo} />
+        <h1 className={styles.authTitle}>Кіру</h1>
+        <p className={styles.authSubtitle}>
           Немесе{' '}
-          <a
-            href="#"
-            className="auth-link"
-            onClick={(e) => {
-              e.preventDefault();
-              goToRegister();
-            }}
-          >
+          <a href="#" className={styles.authLink} onClick={(e) => { e.preventDefault(); goToRegister(); }}>
             Жаңа аккаунт жасаңыз
           </a>
         </p>
-        <form className="auth-form" onSubmit={handleSubmit}>
-          <label htmlFor="email" className="auth-label">
-            Электрондық пошта
-          </label>
-          <input
-            type="email"
-            id="email"
-            className="auth-input"
-            placeholder="Электрондық пошта"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <label htmlFor="password" className="auth-label">
-            Құпиясөз
-          </label>
-          <input
-            type="password"
-            id="password"
-            className="auth-input"
-            placeholder="Құпиясөз"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <a href="#" className="auth-forgot">
+
+        <form className={styles.authForm} onSubmit={handleSubmit}>
+          <div className={styles.inputGroup}>
+            <label htmlFor="email" className={styles.authLabel}>
+              Электрондық пошта
+            </label>
+            <input
+              type="email"
+              id="email"
+              className={styles.authInput}
+              placeholder="Электрондық пошта"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+
+          <div className={styles.inputGroup}>
+  <label htmlFor="password" className={styles.authLabel}>
+    Құпиясөз
+  </label>
+  <div className={styles.passwordContainer}>
+    <input
+      type={showPassword ? 'text' : 'password'}
+      id="password"
+      className={styles.authInput}
+      placeholder="Құпиясөз"
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+    />
+    <span
+      className={styles.eyeIcon}
+      onClick={() => setShowPassword(!showPassword)}
+    >
+      {showPassword ? <FaEyeSlash /> : <FaEye />}
+    </span>
+  </div>
+</div>
+
+          <a href="#" className={styles.authForgot}>
             Құпиясөзді ұмыттыңыз ба?
           </a>
-          <button type="submit" className="auth-button">
+          <button type="submit" className={styles.authButton}>
             Кіру
           </button>
         </form>
-        {/* Если ошибка, показываем сообщение */}
-        {error && <p className="auth-error">{error}</p>}
+
+        {error && <p className={styles.authError}>{error}</p>}
       </div>
     </div>
   );

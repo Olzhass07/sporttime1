@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/Registration.css'; // Подключаем стили
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Импортируем иконки
+import styles from '../styles/Registration.module.css'; // Импортируем CSS-модуль
 
 const Registration = () => {
   const navigate = useNavigate();
@@ -10,35 +11,38 @@ const Registration = () => {
   const [password, setPassword] = useState('');
   const [passwordCheck, setPasswordCheck] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [showPasswordCheck, setShowPasswordCheck] = useState(false); // Отдельно для второго пароля
   const [error, setError] = useState('');
 
   const goToLogin = () => {
-    navigate('/auth'); // Переход на страницу аутентификации
+    navigate('/auth');
+  };
+
+  const goToHome = () => {
+    navigate('/');
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Проверка критериев
     if (username.length < 3) {
-      setError('Имя пользователя должно быть не менее 3 символов.');
+      setError('Пайдаланушы аты кем дегенде 3 таңбадан тұруы керек.');
       return;
     }
     if (!/\S+@\S+\.\S+/.test(email)) {
-      setError('Введите корректный email.');
+      setError('Дұрыс электрондық поштаны енгізіңіз.');
       return;
     }
     if (password.length < 6) {
-      setError('Пароль должен быть не менее 6 символов.');
+      setError('Құпиясөз кем дегенде 6 таңбадан тұруы керек.');
       return;
     }
     if (password !== passwordCheck) {
-      setError('Пароли не совпадают.');
+      setError('Құпиясөздер сәйкес келмейді.');
       return;
     }
 
     try {
-      // Отправка данных на сервер
       const response = await fetch('http://localhost:5000/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -47,90 +51,114 @@ const Registration = () => {
 
       if (!response.ok) {
         const data = await response.json();
-        setError(data.message || 'Ошибка регистрации');
+        setError(data.message || 'Тіркелу қатесі');
         return;
       }
 
       const data = await response.json();
-      console.log('Регистрация успешна:', data);
-      navigate('/auth'); // Перенаправляем на страницу логина
+      console.log('Тіркелу сәтті өтті:', data);
+      navigate('/auth');
     } catch (err) {
-      console.error('Ошибка регистрации:', err);
-      setError('Ошибка регистрации. Попробуйте снова.');
+      console.error('Тіркелу қатесі:', err);
+      setError('Тіркелу кезінде қате пайда болды. Қайталап көріңіз.');
     }
   };
 
   return (
-    <div className="auth-container" align="center">
-      <div className="auth-box">
-        <div className="auth-image">
-          <img
-            src="../icon.jpg" // Укажите путь к вашему изображению
-            alt="Ваше изображение"
-            className="auth-photo"
-          />
+    <div className={styles.authContainer}>
+      <div className={styles.authBox}>
+        <div className={styles.backArrow} onClick={goToHome}>
+          <i className="fas fa-arrow-left"></i>
         </div>
-        <h1 className="auth-title">Жаңа аккаунт құрыңыз</h1>
-        <form className="auth-form" onSubmit={handleSubmit}>
-          <label htmlFor="username" className="auth-label">Имя пользователя:</label>
-          <input
-            type="text"
-            id="username"
-            className="auth-input"
-            placeholder="Введите имя"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <label htmlFor="email" className="auth-label">Электронная почта:</label>
-          <input
-            type="email"
-            id="email"
-            className="auth-input"
-            placeholder="Введите email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <label htmlFor="password" className="auth-label">Пароль:</label>
-          <div className="password-container">
+
+        <div className={styles.authImage}>
+          <img src="../icon.jpg" alt="Логотип" className={styles.authPhoto} />
+        </div>
+        <h1 className={styles.authTitle}>Жаңа аккаунт жасаңыз</h1>
+
+        <form className={styles.authForm} onSubmit={handleSubmit}>
+          <div className={styles.inputGroup}>
+            <label htmlFor="username" className={styles.authLabel}>Пайдаланушы аты</label>
             <input
-              type={showPassword ? 'text' : 'password'}
-              id="password"
-              className="auth-input"
-              placeholder="Введите пароль"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              type="text"
+              id="username"
+              className={styles.authInput}
+              placeholder="Атыңыз"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
-            <button
-              type="button"
-              className="toggle-password"
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              {showPassword ? 'Скрыть' : 'Показать'}
-            </button>
           </div>
-          <label htmlFor="passwordCheck" className="auth-label">Подтвердите пароль:</label>
-          <input
-            type="password"
-            id="passwordCheck"
-            className="auth-input"
-            placeholder="Подтвердите пароль"
-            value={passwordCheck}
-            onChange={(e) => setPasswordCheck(e.target.value)}
-          />
-          {error && <p className="auth-error">{error}</p>}
-          <button type="submit" className="auth-button">Зарегистрироваться</button>
+
+          <div className={styles.inputGroup}>
+            <label htmlFor="email" className={styles.authLabel}>Электрондық пошта</label>
+            <input
+              type="email"
+              id="email"
+              className={styles.authInput}
+              placeholder="Электрондық пошта"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+
+          {/* Поле пароля */}
+          <div className={styles.inputGroup}>
+            <label htmlFor="password" className={styles.authLabel}>Құпиясөз</label>
+            <div className={styles.passwordContainer}>
+              <input
+                type={showPassword ? 'text' : 'password'}
+                id="password"
+                className={styles.authInput}
+                placeholder="Құпиясөз"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <span
+                className={styles.eyeIcon}
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
+            </div>
+          </div>
+
+          {/* Подтверждение пароля */}
+          <div className={styles.inputGroup}>
+            <label htmlFor="passwordCheck" className={styles.authLabel}>Құпиясөзді растаңыз</label>
+            <div className={styles.passwordContainer}>
+              <input
+                type={showPasswordCheck ? 'text' : 'password'}
+                id="passwordCheck"
+                className={styles.authInput}
+                placeholder="Құпиясөзді қайталау"
+                value={passwordCheck}
+                onChange={(e) => setPasswordCheck(e.target.value)}
+              />
+              <span
+                className={styles.eyeIcon}
+                onClick={() => setShowPasswordCheck(!showPasswordCheck)}
+              >
+                {showPasswordCheck ? <FaEyeSlash /> : <FaEye />}
+              </span>
+            </div>
+          </div>
+
+          {error && <p className={styles.authError}>{error}</p>}
+
+          <button type="submit" className={styles.authButton}>Тіркелу</button>
         </form>
-        <p className="auth-subtitle">
-          Уже есть аккаунт?{' '}
+
+        <p className={styles.authSubtitle}>
+          Аккаунтыңыз бар ма?{' '}
           <a
             href="#"
-            className="auth-link"
+            className={styles.authLink}
             onClick={(e) => {
-              e.preventDefault(); // Отменяем стандартное поведение ссылки
-              goToLogin(); // Переход на страницу аутентификации
+              e.preventDefault();
+              goToLogin();
             }}
           >
-            Войти
+            Кіру
           </a>
         </p>
       </div>
