@@ -23,7 +23,7 @@ export default function Footer() {
           <h2>Байланыс</h2>
           <ul>
             <li className="flex items-center gap-2">
-              <Mail size={16} /> bolatulyolzas@gmail.com
+              <Mail size={16} /> bolatulyolzhas@gmail.com
             </li>
             <li className="flex items-center gap-2">
               <Phone size={16} /> +7 (708) 599-02-45
