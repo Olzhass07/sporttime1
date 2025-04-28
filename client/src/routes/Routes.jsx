@@ -8,6 +8,7 @@ import PrivacyPolicy from '../Pages/PrivacyPolicy'; // Импорт страни
 import TrainingPrograms from "../Pages/TrainingPrograms"; 
 import TermsOfUse from "../Pages/TermsOfUse";
 import Profile from "../Pages/Profile"; // Импорт страницы "Профиль"
+import ProgramDetails from "../Pages/ProgramDetails"; // Импорт страницы "Детали программы"
 
 const AppRoutes = () => {
   return (
@@ -21,6 +22,7 @@ const AppRoutes = () => {
         <Route path="/workout" element={<TrainingPrograms />} />
         <Route path="/terms-of-use" element={<TermsOfUse />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/program/:programId" element={<ProgramDetails />} />
       </Routes>
     </Router>
   );
