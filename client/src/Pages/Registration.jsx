@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Импортируем иконки
-import styles from '../styles/Registration.module.css'; // Импортируем CSS-модуль
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import styles from '../styles/Registration.module.css';
+import { toast } from 'react-hot-toast'; // ✅ добавили импорт
 
 const Registration = () => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const Registration = () => {
   const [password, setPassword] = useState('');
   const [passwordCheck, setPasswordCheck] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [showPasswordCheck, setShowPasswordCheck] = useState(false); // Отдельно для второго пароля
+  const [showPasswordCheck, setShowPasswordCheck] = useState(false);
   const [error, setError] = useState('');
 
   const goToLogin = () => {
@@ -57,6 +58,9 @@ const Registration = () => {
 
       const data = await response.json();
       console.log('Тіркелу сәтті өтті:', data);
+
+      toast.success('Сіз сәтті тіркелдіңіз!'); // ✅ показываем тост
+
       navigate('/auth');
     } catch (err) {
       console.error('Тіркелу қатесі:', err);
@@ -101,7 +105,6 @@ const Registration = () => {
             />
           </div>
 
-          {/* Поле пароля */}
           <div className={styles.inputGroup}>
             <label htmlFor="password" className={styles.authLabel}>Құпиясөз</label>
             <div className={styles.passwordContainer}>
@@ -122,7 +125,6 @@ const Registration = () => {
             </div>
           </div>
 
-          {/* Подтверждение пароля */}
           <div className={styles.inputGroup}>
             <label htmlFor="passwordCheck" className={styles.authLabel}>Құпиясөзді растаңыз</label>
             <div className={styles.passwordContainer}>
