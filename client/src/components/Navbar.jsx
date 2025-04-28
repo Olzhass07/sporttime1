@@ -38,9 +38,11 @@ const Navbar = () => {
   return (
     <>
       <header className="navbar">
-        <div className="navbar-logo" onClick={handleLogoClick}> 
-          <img src="../public/icon1.png" alt="Sport Time Logo" className="navbar-logo-img" />
-          <span>Sport Time</span>
+        <div className="navbar-content">
+          <div className="navbar-logo" onClick={handleLogoClick}>
+            <img src="../public/icon1.png" alt="Sport Time Logo" className="navbar-logo-img" />
+            <span>Sport Time</span>
+          </div>
           <div className="navbar-icons-container">
             <img src="../public/user-icon.svg" alt="Профиль" className="navbar-icon" onClick={handleProfileClick} />
             {isAuthenticated && (

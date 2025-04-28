@@ -21,7 +21,7 @@
   font-size: 1.8rem;
   font-weight: 1000;
   color: black;
-  margin: 0 107px;
+  margin-left: 30px; /* ✅ вместо margin: 0 107px */
 }
 
 .navbar-logo-img {
@@ -32,8 +32,8 @@
 .navbar-icons-container {
   display: flex;
   gap: 16px;
-  margin-left: 850px;
-  margin-top: -10px;
+  margin-left: auto; /* автоматическое выравнивание вправо */
+  align-items: center;
 }
 
 .navbar-icon {
@@ -261,4 +261,20 @@
 .logout-button,
 .logout-button span {
   font-weight: 400; /* 👈 Установим более легкий вес для всего текста */
+}
+
+.logo-text {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.navbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
 }
