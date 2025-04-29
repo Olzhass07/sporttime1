@@ -1,0 +1,189 @@
+/* Общий контейнер */
+.program-details-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+  }
+  
+  /* Заголовок программы */
+  .program-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  /* Описание программы */
+  .program-description {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #555;
+    line-height: 1.6;
+  }
+  
+/* Изображение программы */
+.program-image {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%; /* Увеличиваем ширину до 100% контейнера */
+    max-height: 150px; /* Уменьшаем максимальную высоту */
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+  }
+  
+  /* Контейнер для всех тренировок */
+  .program-workouts {
+    margin-top: 40px;
+  }
+  
+  /* Контейнер для каждого дня */
+  .workout-day {
+    margin-bottom: 40px;
+    padding: 25px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    background-color: #fff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .workout-day:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Заголовок дня */
+  .workout-day h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #222;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    text-transform: capitalize;
+  }
+  
+  /* Контейнер для каждого упражнения */
+  .exercise-container {
+    margin-bottom: 25px;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    background-color: #f7f7f7;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    transition: box-shadow 0.2s ease;
+  }
+  
+  .exercise-container:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Название упражнения */
+  .exercise-container h4 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Описание упражнения */
+  .exercise-container p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #555;
+    line-height: 1.6;
+    flex: 1;
+  }
+  
+  /* Гифка упражнения */
+  .exercise-gif {
+    width: 200px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+  }
+  
+  .exercise-gif:hover {
+    transform: scale(1.05);
+  }
+
+
+
+
+  /* Таймер */
+.timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+  }
+  
+  .timer-display {
+    display: flex;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    background-color: #f0f0f0;
+    padding: 10px 40px; /* Увеличьте значение для большей ширины */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px;
+    font-family: "Courier New", Courier, monospace;
+  }
+  
+  .timer-input {
+    width: 50px;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    background: transparent;
+    outline: none;
+    color: #333; /* Темный цвет текста */
+    font-family: "Courier New", Courier, monospace;
+  }
+  
+  .timer-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  .timer-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .timer button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    background-color: #333; /* Темный цвет кнопок */
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .timer button:hover {
+    background-color: #444; /* Более светлый оттенок при наведении */
+    transform: scale(1.05); /* Легкое увеличение кнопки */
+  }
+  
+  .timer button:disabled {
+    background-color: #555; /* Серый цвет для неактивных кнопок */
+    cursor: not-allowed;
+  }
