@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth'; // импортируем хук
 import { toast } from 'react-hot-toast'; // Импортируем toast для уведомлений
@@ -8,12 +8,21 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isAuthenticated, logout } = useAuth(); // получаем статус авторизации и функцию logout
+  const [nickname, setNickname] = useState(''); // состояние для ника
+
+  useEffect(() => {
+    // Получаем ник из localStorage
+    const storedNickname = localStorage.getItem('nickname');
+    if (storedNickname) {
+      setNickname(storedNickname);
+    }
+  }, []);
 
   const handleProfileClick = () => {
     if (isAuthenticated) {
       navigate('/profile'); // если вошёл — в профиль
     } else {
-      navigate('/auth'); // иначе на вход/регу
+      navigate('/auth'); // иначе на вход/регистрацию
     }
   };
 
@@ -33,6 +42,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logout(); // вызываем функцию выхода
+    localStorage.removeItem('nickname'); // очищаем ник из localStorage
     toast.success('Сіз аккаунттан шықтыңыз!'); // Показываем уведомление
     navigate('/auth'); // перенаправляем на страницу входа
   };
@@ -58,6 +68,11 @@ const Navbar = () => {
         <div className={`overlay ${isMenuOpen ? 'visible' : ''}`} onClick={closeMenu}>
           <div className={`sidebar-menu ${isMenuOpen ? 'open' : ''}`} onClick={(e) => e.stopPropagation()}>
             <ul>
+              {/* Отображение ника в верхней части меню */}
+              <li className="menu-nickname">
+                <i className="fas fa-user"></i>
+                <span>{nickname}</span>
+              </li>
               <li onClick={() => navigate('/generator')}>
                 <i className="fas fa-cogs"></i>
                 <span>Жаттығу генераторы</span>
