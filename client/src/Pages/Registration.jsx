@@ -59,9 +59,12 @@ const Registration = () => {
       const data = await response.json();
       console.log('Тіркелу сәтті өтті:', data);
 
-      toast.success('Сіз сәтті тіркелдіңіз!'); // ✅ показываем тост
+      // ✅ Сохраняем ник в localStorage
+      localStorage.setItem('nickname', username);
 
-      navigate('/auth');
+      toast.success('Сіз сәтті тіркелдіңіз!'); // Показываем уведомление
+
+      navigate('/auth'); // Перенаправляем на страницу входа
     } catch (err) {
       console.error('Тіркелу қатесі:', err);
       setError('Тіркелу кезінде қате пайда болды. Қайталап көріңіз.');
