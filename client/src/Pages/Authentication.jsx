@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useAuth } from '../context/AuthContext.jsx';
 import styles from '../styles/Authentication.module.css';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { toast } from 'react-hot-toast'; // ✅ добавили импорт
 
 const Authentication = () => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const Authentication = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false); // <-- ДОБАВИЛИ
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
 
   const goToRegister = () => {
@@ -30,6 +31,9 @@ const Authentication = () => {
 
       if (response.status === 200) {
         login(response.data.token);
+
+        toast.success('Сіз сәтті кірдіңіз!'); // ✅ показываем тост
+
         navigate('/');
       }
     } catch (err) {
@@ -69,26 +73,26 @@ const Authentication = () => {
           </div>
 
           <div className={styles.inputGroup}>
-  <label htmlFor="password" className={styles.authLabel}>
-    Құпиясөз
-  </label>
-  <div className={styles.passwordContainer}>
-    <input
-      type={showPassword ? 'text' : 'password'}
-      id="password"
-      className={styles.authInput}
-      placeholder="Құпиясөз"
-      value={password}
-      onChange={(e) => setPassword(e.target.value)}
-    />
-    <span
-      className={styles.eyeIcon}
-      onClick={() => setShowPassword(!showPassword)}
-    >
-      {showPassword ? <FaEyeSlash /> : <FaEye />}
-    </span>
-  </div>
-</div>
+            <label htmlFor="password" className={styles.authLabel}>
+              Құпиясөз
+            </label>
+            <div className={styles.passwordContainer}>
+              <input
+                type={showPassword ? 'text' : 'password'}
+                id="password"
+                className={styles.authInput}
+                placeholder="Құпиясөз"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <span
+                className={styles.eyeIcon}
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
+            </div>
+          </div>
 
           <a href="#" className={styles.authForgot}>
             Құпиясөзді ұмыттыңыз ба?

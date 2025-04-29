@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth'; // импортируем хук
+import { toast } from 'react-hot-toast'; // Импортируем toast для уведомлений
 import '../styles/Navbar.css';
 
 const Navbar = () => {
@@ -32,6 +33,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logout(); // вызываем функцию выхода
+    toast.success('Сіз аккаунттан шықтыңыз!'); // Показываем уведомление
     navigate('/auth'); // перенаправляем на страницу входа
   };
 
