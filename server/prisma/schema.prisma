@@ -3,8 +3,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql" // Укажите вашу базу данных (например, "mysql", "sqlite", "postgresql")
-  url = env("DATABASE_URL") // Ссылка на базу данных из переменной окружения
+  provider = "postgresql"
+  url = env("DATABASE_URL")
 }
 
 model User {
