@@ -29,39 +29,60 @@ export default function App() {
     }
   };
 
+  const handleBack = () => {
+    if (currentStep > 0) {
+      setCurrentStep(currentStep - 1);
+    }
+  };
+
   return (
     <div className="container">
       <div className="progress-bar">
         {steps.map((step, index) => (
           <div
             key={step.key}
-            className={`progress-step ${index === currentStep ? "active" : ""}`}
+            className={`progress-step 
+              ${index === currentStep ? "active" : ""} 
+              ${index < currentStep ? "completed" : ""}`}
           >
             {index + 1}
           </div>
         ))}
       </div>
 
-      <h2 className="question">{steps[currentStep].label}:</h2>
+      <div className="content fade-in">
+        <h2 className="question">{steps[currentStep].label}:</h2>
 
-      {stepKey === "done" ? (
-        <div className="summary">
-          <h3>Сіз таңдадыңыз:</h3>
-          <pre>{JSON.stringify(answers, null, 2)}</pre>
-        </div>
-      ) : (
-        <div className="options">
-          {options[stepKey].map((option) => (
-            <button
-              key={option}
-              className="option-button"
-              onClick={() => handleOptionClick(option)}
-            >
-              {option}
-            </button>
-          ))}
-        </div>
-      )}
+        {stepKey === "done" ? (
+          <div className="summary">
+            <h3>Сіз таңдадыңыз:</h3>
+            <ul>
+              {Object.entries(answers).map(([key, val]) => (
+                <li key={key}>
+                  <strong>{key}:</strong> {val}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <div className="options">
+            {options[stepKey].map((option) => (
+              <button
+                key={option}
+                className="option-button"
+                onClick={() => handleOptionClick(option)}
+              >
+                {option}
+              </button>
+            ))}
+            {currentStep > 0 && (
+              <button className="back-button" onClick={handleBack}>
+                ⬅ Артқа
+              </button>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

@@ -10,7 +10,6 @@ import TermsOfUse from "../Pages/TermsOfUse";
 import Profile from "../Pages/Profile"; // Импорт страницы "Профиль"
 import ProgramDetails from "../Pages/ProgramDetails";
 import Generator from "../Pages/Generator"; // Импорт страницы "Генератор"
-import ProgramDetails from "../Pages/ProgramDetails"; // Импорт страницы "Детали программы"
 import SavedPrograms from "../Pages/SavedPrograms"; // Импорт страницы "Сохраненные программы"
 
 
