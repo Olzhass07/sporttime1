@@ -14,4 +14,16 @@ model User {
   password  String
   googleId  String?
   createdAt DateTime @default(now())
+  preferences  UserPreferences?
+}
+
+model UserPreferences {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @unique
+  user      User     @relation(fields: [userId], references: [id])
+  gender    String
+  age       String
+  goal      String
+  fitness   String
+  createdAt DateTime @default(now())
 }

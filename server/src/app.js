@@ -4,6 +4,7 @@ const cors = require('cors');
 const { PrismaClient } = require('@prisma/client');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken'); // Для создания JWT токенов
+const preferencesRoutes = require('./routes/preferences');
 
 const prisma = new PrismaClient();
 const app = express();
@@ -12,6 +13,8 @@ const PORT = 5000;
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.json());
+app.use('/api', preferencesRoutes);
 
 // Регистрация пользователя
 app.post('/auth/register', async (req, res) => {
