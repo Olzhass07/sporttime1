@@ -1,66 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/TrainingPrograms.css";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import Footer from "../components/Footer";
-import { useNavigate } from "react-router-dom"; // Импорт useNavigate
-
-const programs = [
-  {
-    id: "massgain",
-    title: "Программа для набора массы (Hypertrophy Training)",
-    description: "Увеличение мышечной массы.",
-    image: "../public/massgain.jpg",
-  },
-  {
-    id: "fatloss",
-    title: "Программа для сжигания жира (Fat Loss)",
-    description: "Снижение жировой массы и улучшение общей физической формы.",
-    image: "../public/losefat.jpg",
-  },
-  {
-    id: "strength",
-    title: "Программа для улучшения силы (Strength Training)",
-    description: "Развитие общей физической формы и подвижности.",
-    image: "../public/strenght.webp",
-  },
-  {
-    id: "endurance",
-    title: "Программа для улучшения выносливости (Endurance Training)",
-    description: "Повышение общей выносливости и кардио-формы",
-    image: "../public/endurance.jpg",
-  },
-  {
-    id: "flexibility",
-    title: "Программа для улучшения гибкости (Flexibility Training)",
-    description: "Повышение гибкости и подвижности.",
-    image: "../public/flexibility.jpg",
-  },
-  {
-    id: "rehabilitation",
-    title: "Программа для реабилитации (Rehabilitation Training)",
-    description: "Легкие упражнения на укрепление мышц и восстановление подвижности.",
-    image: "../public/rehabilitation.jpg",
-  },
-];
+import { useNavigate } from "react-router-dom";
+import programs from "../data/programsList"; // ✅ импорт массива программ
 
 export default function TrainingPrograms() {
   const [favorites, setFavorites] = useState([]);
-  const navigate = useNavigate(); // Инициализация navigate
+  const navigate = useNavigate();
 
-  const toggleFavorite = (programTitle) => {
-    setFavorites((prevFavorites) =>
-      prevFavorites.includes(programTitle)
-        ? prevFavorites.filter((title) => title !== programTitle)
-        : [...prevFavorites, programTitle]
-    );
+  // Загружаем избранные из localStorage
+  useEffect(() => {
+    const storedFavorites = JSON.parse(localStorage.getItem("favoritePrograms")) || [];
+    setFavorites(storedFavorites);
+  }, []);
+
+  // Переключаем избранное состояние и сохраняем в localStorage
+  const toggleFavorite = (programId) => {
+    let updatedFavorites;
+    if (favorites.includes(programId)) {
+      updatedFavorites = favorites.filter((id) => id !== programId);
+    } else {
+      updatedFavorites = [...favorites, programId];
+    }
+
+    setFavorites(updatedFavorites);
+    localStorage.setItem("favoritePrograms", JSON.stringify(updatedFavorites));
   };
 
   return (
     <>
+      <Navbar />
       <div className="training-programs-container">
-        <Navbar />
         <h1 className="training-programs-title">Программы тренировок</h1>
         <div className="training-programs-cards-grid">
           {programs.map((program) => (
@@ -78,13 +51,13 @@ export default function TrainingPrograms() {
                 <FontAwesomeIcon
                   icon={faHeart}
                   className={`training-programs-heart-icon ${
-                    favorites.includes(program.title) ? "active" : ""
+                    favorites.includes(program.id) ? "active" : ""
                   }`}
-                  onClick={() => toggleFavorite(program.title)}
+                  onClick={() => toggleFavorite(program.id)}
                 />
                 <button
                   className="training-programs-card-button"
-                  onClick={() => navigate(`/program/${program.id}`)} // Перенаправление на страницу программы
+                  onClick={() => navigate(`/program/${program.id}`)}
                 >
                   Подробнее
                 </button>

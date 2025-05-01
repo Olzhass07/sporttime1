@@ -10,6 +10,9 @@ import TermsOfUse from "../Pages/TermsOfUse";
 import Profile from "../Pages/Profile"; // Импорт страницы "Профиль"
 import ProgramDetails from "../Pages/ProgramDetails";
 import Generator from "../Pages/Generator"; // Импорт страницы "Генератор"
+import ProgramDetails from "../Pages/ProgramDetails"; // Импорт страницы "Детали программы"
+import SavedPrograms from "../Pages/SavedPrograms"; // Импорт страницы "Сохраненные программы"
+
 
 const AppRoutes = () => {
   return (
@@ -25,6 +28,8 @@ const AppRoutes = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/program/:programId" element={<ProgramDetails />} />
         <Route path="/generator" element={<Generator />} />
+        <Route path="/savedprograms" element={<SavedPrograms />} />
+
       </Routes>
     </Router>
   );
