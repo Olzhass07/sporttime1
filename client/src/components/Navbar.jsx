@@ -77,7 +77,7 @@ const Navbar = () => {
                 <i className="fas fa-cogs"></i>
                 <span>Жаттығу генераторы</span>
               </li>
-              <li onClick={() => navigate('/custom-workouts')}>
+              <li onClick={() => navigate('/savedprograms')}>
                 <i className="fas fa-dumbbell"></i>
                 <span>Жеке жаттығулар</span>
               </li>

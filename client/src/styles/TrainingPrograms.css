@@ -28,6 +28,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
+  /* Здесь можно добавить max-width для всей сетки */
+  width: 100%;
 }
 
 /* Карточка программы */
@@ -39,8 +41,14 @@
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%; /* Ограничение ширины карточки */
+  max-width: 350px; /* Максимальная ширина карточки */
+  height: auto;
+  min-height: 480px; /* Минимальная высота карточки */
+  padding-bottom: 20px; /* Отступ для кнопки */
 }
 
+/* При наведении на карточку */
 .training-programs-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
@@ -51,6 +59,9 @@
   width: 100%;
   height: 200px;
   object-fit: cover;
+  /* Фиксируем размер изображения */
+  max-width: 100%;
+  max-height: 200px;
 }
 
 /* Название программы */
@@ -58,6 +69,9 @@
   font-size: 1.5rem;
   margin: 20px;
   color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Обрезаем длинные заголовки */
+  white-space: nowrap;
 }
 
 /* Описание программы */
@@ -66,6 +80,11 @@
   margin: 0 20px 20px;
   color: #666;
   flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Ограничиваем описание 3 строками */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.4; /* Настройка высоты строки */
 }
 
 /* Кнопка программы */
@@ -112,4 +131,10 @@
   justify-content: center;
 }
 
-
+/* Сообщение, если нет избранных программ */
+.no-favorite-message {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #777;
+  margin-top: 40px;
+}
