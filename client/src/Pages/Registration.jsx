@@ -26,6 +26,7 @@ const Registration = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Валидация данных
     if (username.length < 3) {
       setError('Пайдаланушы аты кем дегенде 3 таңбадан тұруы керек.');
       return;
@@ -59,7 +60,8 @@ const Registration = () => {
       const data = await response.json();
       console.log('Тіркелу сәтті өтті:', data);
 
-      // ✅ Сохраняем ник в localStorage
+      // ✅ Сохраняем токен и никнейм в localStorage
+      localStorage.setItem('token', data.token);
       localStorage.setItem('nickname', username);
 
       toast.success('Сіз сәтті тіркелдіңіз!'); // Показываем уведомление

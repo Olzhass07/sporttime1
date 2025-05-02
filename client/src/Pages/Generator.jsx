@@ -1,8 +1,22 @@
 import React, { useState } from "react";
 import "../styles/Generator.css";
 import Navbar from "../components/Navbar";
-import programs from "../data/programsList"; // Импорт списка программ
-import { toast, Toaster } from "react-hot-toast"; // Импорт react-hot-toast
+import programs from "../data/programsList";
+import { toast, Toaster } from "react-hot-toast";
+import { jwtDecode } from "jwt-decode";
+
+const getUserIdFromToken = () => {
+  const token = localStorage.getItem("authToken");
+  if (!token) return null;
+
+  try {
+    const decoded = jwtDecode(token);
+    return decoded.userId;
+  } catch (error) {
+    console.error("Ошибка при декодировании токена:", error);
+    return null;
+  }
+};
 
 const steps = [
   { label: "Жынысыңыз", key: "gender" },
@@ -51,6 +65,13 @@ export default function Generator() {
   };
 
   const savePreferences = async () => {
+    const userId = getUserIdFromToken();
+
+    if (!userId) {
+      toast.error("Не удалось определить пользователя. Пожалуйста, войдите в систему.");
+      return;
+    }
+
     try {
       const response = await fetch("http://localhost:5000/api/preferences", {
         method: "POST",
@@ -58,7 +79,7 @@ export default function Generator() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          userId: 1, // Замените на реальный ID пользователя
+          userId,
           ...answers,
         }),
       });
@@ -66,59 +87,41 @@ export default function Generator() {
       if (response.ok) {
         const data = await response.json();
         console.log("Данные успешно сохранены:", data);
-        toast.success("Данные успешно сохранены!"); // Уведомление об успехе
+        toast.success("Данные успешно сохранены!");
       } else {
         console.error("Ошибка при сохранении данных");
-        toast.error("Ошибка при сохранении данных"); // Уведомление об ошибке
+        toast.error("Ошибка при сохранении данных");
       }
     } catch (error) {
       console.error("Ошибка:", error);
-      toast.error("Ошибка при сохранении данных"); // Уведомление об ошибке
+      toast.error("Ошибка при сохранении данных");
     }
   };
 
   const filterWorkouts = () => {
     const result = programs.filter((program) => {
-      if (answers.bodyType === "Арық" && program.id === "massgain") {
-        return true; // Программа для набора массы
-      }
-      if (answers.bodyType === "Толық" && program.id === "fatloss") {
-        return true; // Программа для сжигания жира
-      }
-      if (answers.goal === "Форманы сақтау" && program.id === "flexibility") {
-        return true; // Программа для гибкости
-      }
-      if (answers.fitness === "Бастапқы деңгей" && program.id === "rehabilitation") {
-        return true; // Программа для реабилитации
-      }
-      if (answers.goal === "Бұлшық ет өсіру" && program.id === "strength") {
-        return true; // Программа для силы
-      }
-      if (answers.goal === "Арықтау" && program.id === "endurance") {
-        return true; // Программа для выносливости
-      }
-      return false; // Если ничего не подходит
+      if (answers.bodyType === "Арық" && program.id === "massgain") return true;
+      if (answers.bodyType === "Толық" && program.id === "fatloss") return true;
+      if (answers.goal === "Форманы сақтау" && program.id === "flexibility") return true;
+      if (answers.fitness === "Бастапқы деңгей" && program.id === "rehabilitation") return true;
+      if (answers.goal === "Бұлшық ет өсіру" && program.id === "strength") return true;
+      if (answers.goal === "Арықтау" && program.id === "endurance") return true;
+      return false;
     });
     setFilteredWorkouts(result);
-    if (result.length > 0) {
-      toast.success("Подходящие тренировки найдены!");
-    } else {
-      toast.error("Подходящих тренировок не найдено.");
-    }
+    if (result.length > 0) toast.success("Подходящие тренировки найдены!");
+    else toast.error("Подходящих тренировок не найдено.");
   };
 
   return (
     <>
       <Navbar />
-      <Toaster position="top-right" reverseOrder={false} /> {/* Добавлен Toaster */}
       <div className="container">
         <div className="progress-bar">
           {steps.map((step, index) => (
             <div
               key={step.key}
-              className={`progress-step 
-                ${index === currentStep ? "active" : ""} 
-                ${index < currentStep ? "completed" : ""}`}
+              className={`progress-step ${index === currentStep ? "active" : ""} ${index < currentStep ? "completed" : ""}`}
             >
               {index + 1}
             </div>
@@ -165,11 +168,7 @@ export default function Generator() {
           ) : (
             <div className="options">
               {options[stepKey].map((option) => (
-                <button
-                  key={option}
-                  className="option-button"
-                  onClick={() => handleOptionClick(option)}
-                >
+                <button key={option} className="option-button" onClick={() => handleOptionClick(option)}>
                   {option}
                 </button>
               ))}

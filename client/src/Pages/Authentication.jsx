@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useAuth } from '../context/AuthContext.jsx';
 import styles from '../styles/Authentication.module.css';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { toast } from 'react-hot-toast'; // ✅ добавили импорт
+import { toast } from 'react-hot-toast';
 
 const Authentication = () => {
   const navigate = useNavigate();
@@ -27,16 +27,25 @@ const Authentication = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5000/auth/login', { email, password });
+      const response = await axios.post('http://localhost:5000/auth/login', {
+        email,
+        password,
+      });
 
       if (response.status === 200) {
-        login(response.data.token);
+        const { token, user } = response.data;
 
-        toast.success('Сіз сәтті кірдіңіз!'); // ✅ показываем тост
+        // Сохраняем токен и userId в localStorage
+        localStorage.setItem('authToken', token);
+        localStorage.setItem('userId', user.id);
 
+        login(token); // обновляем глобальное состояние, если используется
+
+        toast.success('Сіз сәтті кірдіңіз!');
         navigate('/');
       }
     } catch (err) {
+      console.error('Ошибка входа:', err);
       setError('Неверный email или пароль');
     }
   };
