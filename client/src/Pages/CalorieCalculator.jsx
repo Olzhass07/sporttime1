@@ -81,20 +81,36 @@ const CalorieCalculator = () => {
     setWaterIntake(water);
   };
 
-  const chartData = {
+  const chartData = macros && {
     labels: ['Ақуыздар (ккал)', 'Майлар (ккал)', 'Көмірсулар (ккал)'],
     datasets: [
       {
         data: [
-          macros?.proteinCalories,
-          macros?.fatCalories,
-          macros?.carbsCalories,
+          Math.round(macros.proteinCalories),
+          Math.round(macros.fatCalories),
+          Math.round(macros.carbsCalories),
         ],
         backgroundColor: ['#ff6384', '#36a2eb', '#ffcd56'],
         hoverBackgroundColor: ['#ff6384', '#36a2eb', '#ffcd56'],
       },
     ],
+  };  
+
+  const chartOptions = {
+    plugins: {
+      tooltip: {
+        callbacks: {
+          label: function (context) {
+            const total = context.dataset.data.reduce((a, b) => a + b, 0);
+            const value = context.raw;
+            const percentage = ((value / total) * 100).toFixed(1);
+            return `${context.label}: ${value} ккал (${percentage}%)`;
+          },
+        },
+      },
+    },
   };
+  
 
   return (
     <>
@@ -112,10 +128,9 @@ const CalorieCalculator = () => {
         {/* Основной контейнер */}
         <div className="calorie-calculator">
           <h1>Калория калькуляторы</h1>
-
-          <div className="form-group gender-buttons">
-            <label>Жынысыңыз:</label>
-            <div className="gender-buttons">
+          <div className="form-group gender-group">
+              <label className="gender-label">Жынысыңыз:</label>
+              <div className="gender-buttons">
               <button
                 className={gender === 'male' ? 'active' : ''}
                 onClick={() => setGender('male')}
@@ -202,11 +217,11 @@ const CalorieCalculator = () => {
                 <strong>{Math.round(calories)} ккал</strong>
               </p>
 
-              {macros && (
+              {macros && chartData && (
                 <div className="macros-chart">
-                  <Doughnut data={chartData} />
-                </div>
-              )}
+                  <Doughnut data={chartData} key={JSON.stringify(macros)} />
+                  </div>
+                )}
             </>
           )}
         </div>
