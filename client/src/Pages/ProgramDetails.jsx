@@ -28,8 +28,8 @@ const ProgramDetails = () => {
                 <div key={index} className="exercise-container">
                   <h4>{exercise.name}</h4>
                   <p>{exercise.description}</p>
-                  <p><strong>Время выполнения:</strong> {exercise.duration}</p>
-                  <p><strong>Количество подходов:</strong> {exercise.sets}</p>
+                  <p><strong>Орындау уақыты:</strong> {exercise.duration}</p>
+                  <p><strong>Тәсілдер саны:</strong> {exercise.sets}</p>
                   <img src={exercise.gif} alt={exercise.name} className="exercise-gif" />
                   <Timer />
                 </div>
