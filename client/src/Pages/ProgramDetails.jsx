@@ -29,7 +29,7 @@ const ProgramDetails = () => {
                   <h4>{exercise.name}</h4>
                   <p>{exercise.description}</p>
                   <p><strong>Орындау уақыты:</strong> {exercise.duration}</p>
-                  <p><strong>Тәсілдер саны:</strong> {exercise.sets}</p>
+                  <p><strong>Подход саны:</strong> {exercise.sets}</p>
                   <img src={exercise.gif} alt={exercise.name} className="exercise-gif" />
                   <Timer />
                 </div>
