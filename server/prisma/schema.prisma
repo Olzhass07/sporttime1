@@ -27,3 +27,11 @@ model UserPreferences {
   fitness   String
   createdAt DateTime @default(now())
 }
+
+
+model Gif {
+  id     Int    @id @default(autoincrement())
+  gifId  String // Уникальный идентификатор гифки
+  gifUrl String // URL гифки
+}
+
