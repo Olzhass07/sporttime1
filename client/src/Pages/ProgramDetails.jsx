@@ -10,7 +10,7 @@ const ProgramDetails = () => {
   const program = programs.find((p) => p.id === programId); // Ищем нужную программу
 
   if (!program) {
-    return <div>Программа не найдена</div>;
+    return <div>Бағдарлама табылмады</div>;
   }
 
   return (
@@ -23,13 +23,13 @@ const ProgramDetails = () => {
         <div className="program-workouts">
           {program.workouts.map((workout) => (
             <div key={workout.day} className="workout-day">
-              <h3>День {workout.day}</h3>
+              <h3>Күн {workout.day}</h3>
               {workout.exercises.map((exercise, index) => (
                 <div key={index} className="exercise-container">
                   <h4>{exercise.name}</h4>
                   <p>{exercise.description}</p>
-                  <p><strong>Время выполнения:</strong> {exercise.duration}</p>
-                  <p><strong>Количество подходов:</strong> {exercise.sets}</p>
+                  <p><strong>Орындау уақыты:</strong> {exercise.duration}</p>
+                  <p><strong>Тәсілдер саны:</strong> {exercise.sets}</p>
                   <img src={exercise.gif} alt={exercise.name} className="exercise-gif" />
                   <Timer />
                 </div>

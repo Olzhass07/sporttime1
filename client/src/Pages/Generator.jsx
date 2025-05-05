@@ -145,7 +145,7 @@ export default function Generator() {
                 Сақтау
               </button>
               <button className="save-button" onClick={filterWorkouts}>
-                Тренировкаларды көру
+                Жаттығуларды көру
               </button>
               <button className="restart-button" onClick={handleRestart}>
                 Қайта өту
