@@ -1,0 +1,100 @@
+/* Общие стили для профиля */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7fafc;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .profile-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-size: 1rem;
+  }
+  
+  .profile-title {
+    font-size: 2.4rem;
+    color: #161010;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+  
+  .profile-info {
+    font-size: 1.2rem;
+    color: #444;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #f0f4f8;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  }
+  
+  .profile-info strong {
+    color: #3a424a;
+  }
+  
+  .preferences-list,
+  .calorie-preferences-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+  }
+  
+  .preferences-list li,
+  .calorie-preferences-list li {
+    font-size: 1.1rem;
+    color: #1d1717a5;
+    margin-bottom: 18px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f9fafb;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .preferences-list li strong,
+  .calorie-preferences-list li strong {
+    color: #000000;
+  }
+  
+  .calorie-preferences-list li {
+    background-color: #f3f4f6;
+    font-weight: 400;
+  }
+  
+  .loading-text {
+    font-size: 1.2rem;
+    color: #888;
+    margin-top: 20px;
+  }
+  
+  /* Для маленьких экранов */
+  @media (max-width: 768px) {
+    .profile-container {
+      padding: 20px;
+      max-width: 100%;
+    }
+  
+    .profile-title {
+      font-size: 2rem;
+    }
+  
+    .profile-info {
+      font-size: 1rem;
+    }
+  
+    .preferences-list li,
+    .calorie-preferences-list li {
+      font-size: 1rem;
+      padding: 12px;
+    }
+  }
+  
