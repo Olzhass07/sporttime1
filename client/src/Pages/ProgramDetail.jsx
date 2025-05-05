@@ -21,7 +21,7 @@ const ProgramDetail = () => {
       <p>{program.description}</p>
 
       <div>
-        <h2>Упражнения:</h2>
+        <h2>Жаттығулар:</h2>
         <ul>
           {program.exercises.map((ex, index) => (
             <li key={index}>

@@ -36,7 +36,7 @@ export default function SavedPrograms() {
                     className="training-programs-card-button"
                     onClick={() => (window.location.href = `/program/${program.id}`)}
                   >
-                    Подробнее
+                    Толығырақ
                   </button>
                 </div>
               </div>

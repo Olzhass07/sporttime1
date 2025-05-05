@@ -45,8 +45,8 @@ const Authentication = () => {
         navigate('/');
       }
     } catch (err) {
-      console.error('Ошибка входа:', err);
-      setError('Неверный email или пароль');
+      console.error('Кіру қатесі:', err);
+      setError('Қате email немесе құпия сөз');
     }
   };
 

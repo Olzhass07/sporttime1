@@ -92,7 +92,7 @@ const Navbar = () => {
               <li>
                 <button className="logout-button" onClick={handleLogout}>
                   <i className="fas fa-sign-out-alt"></i>
-                  <span>Выйти</span>
+                  <span>Шығу</span>
                 </button>
               </li>
             </ul>
