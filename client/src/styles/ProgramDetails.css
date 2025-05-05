@@ -29,15 +29,15 @@
   
 /* Изображение программы */
 .program-image {
-    display: block;
-    margin: 20px auto;
-    max-width: 100%; /* Увеличиваем ширину до 100% контейнера */
-    max-height: 150px; /* Уменьшаем максимальную высоту */
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    object-fit: cover;
-  }
+  display: block;
+  margin: 120px auto 30px; /* верхний отступ от Navbar увеличен */
+  width: 30%;              /* или конкретная ширина: 800px */
+  max-height: 300px;       /* увеличено */
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+}
   
   /* Контейнер для всех тренировок */
   .program-workouts {
