@@ -79,6 +79,20 @@ const CalorieCalculator = () => {
       carbsCalories,
     });
     setWaterIntake(water);
+
+    // Сохраняем в localStorage
+    const preferences = {
+      weight,
+      height,
+      age,
+      gender,
+      activityLevel,
+      goal,
+      totalCalories,
+      macros,
+      waterIntake: water,
+    };
+    localStorage.setItem('caloriePreferences', JSON.stringify(preferences));
   };
 
   const chartData = macros && {
@@ -94,7 +108,7 @@ const CalorieCalculator = () => {
         hoverBackgroundColor: ['#ff6384', '#36a2eb', '#ffcd56'],
       },
     ],
-  };  
+  };
 
   const chartOptions = {
     plugins: {
@@ -110,7 +124,6 @@ const CalorieCalculator = () => {
       },
     },
   };
-  
 
   return (
     <>
@@ -220,8 +233,8 @@ const CalorieCalculator = () => {
               {macros && chartData && (
                 <div className="macros-chart">
                   <Doughnut data={chartData} key={JSON.stringify(macros)} />
-                  </div>
-                )}
+                </div>
+              )}
             </>
           )}
         </div>
