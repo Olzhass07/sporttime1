@@ -167,3 +167,21 @@
 .eyeIcon:hover {
   color: #374151;
 }
+
+.verifyEmailButton {
+  background-color: #4CAF50;
+  color: white;
+  margin-top: -10px;
+  margin-bottom: -5px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.verifyEmailButton:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}

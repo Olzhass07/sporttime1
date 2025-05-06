@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import styles from '../styles/Registration.module.css';
-import { toast } from 'react-hot-toast'; // ✅ добавили импорт
+import { toast } from 'react-hot-toast';
+import EmailConfirm from '../components/EmailConfirm';
 
 const Registration = () => {
   const navigate = useNavigate();
@@ -14,6 +15,9 @@ const Registration = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showPasswordCheck, setShowPasswordCheck] = useState(false);
   const [error, setError] = useState('');
+  const [emailSent, setEmailSent] = useState(false); // Флаг для отслеживания отправки кода
+  const [emailVerified, setEmailVerified] = useState(false);
+  const [showEmailConfirm, setShowEmailConfirm] = useState(false);
 
   const goToLogin = () => {
     navigate('/auth');
@@ -23,10 +27,42 @@ const Registration = () => {
     navigate('/');
   };
 
+  // Функция для отправки кода подтверждения на почту
+  const sendVerificationEmail = async () => {
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      setError('Дұрыс электрондық поштаны енгізіңіз.');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:5000/auth/send-verification-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Қате жіберуде');
+      }
+
+      setEmailSent(true); // Устанавливаем флаг отправки
+      setShowEmailConfirm(true); // Показываем форму для ввода кода
+      toast.success('Растау коды поштаңызға жіберілді');
+    } catch (err) {
+      console.error('Қате:', err);
+      setError('Хат жіберу кезінде қате шықты. Қайталап көріңіз.');
+    }
+  };
+
+  // Функция для обработки отправки формы регистрации
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Валидация данных
+    if (!emailVerified) {
+      setError('Алдымен электрондық поштаңызды растаңыз.');
+      return;
+    }
+
     if (username.length < 3) {
       setError('Пайдаланушы аты кем дегенде 3 таңбадан тұруы керек.');
       return;
@@ -58,15 +94,11 @@ const Registration = () => {
       }
 
       const data = await response.json();
-      console.log('Тіркелу сәтті өтті:', data);
-
-      // ✅ Сохраняем токен и никнейм в localStorage
       localStorage.setItem('token', data.token);
       localStorage.setItem('nickname', username);
 
-      toast.success('Сіз сәтті тіркелдіңіз!'); // Показываем уведомление
-
-      navigate('/auth'); // Перенаправляем на страницу входа
+      toast.success('Сіз сәтті тіркелдіңіз!');
+      navigate('/auth');
     } catch (err) {
       console.error('Тіркелу қатесі:', err);
       setError('Тіркелу кезінде қате пайда болды. Қайталап көріңіз.');
@@ -106,8 +138,23 @@ const Registration = () => {
               className={styles.authInput}
               placeholder="Электрондық пошта"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                setEmailSent(false); // Сбрасываем флаг отправки
+                setEmailVerified(false); // Сбрасываем флаг подтверждения
+              }}
             />
+          </div>
+
+          <div className={styles.inputGroup}>
+            <button
+              type="button"
+              className={styles.verifyEmailButton}
+              onClick={sendVerificationEmail}
+              disabled={emailSent} // Кнопка не активна, если код уже отправлен
+            >
+              Электрондық поштаны растау
+            </button>
           </div>
 
           <div className={styles.inputGroup}>
@@ -152,7 +199,13 @@ const Registration = () => {
 
           {error && <p className={styles.authError}>{error}</p>}
 
-          <button type="submit" className={styles.authButton}>Тіркелу</button>
+          {emailVerified && (
+            <p className={styles.authSuccess}>Электрондық пошта расталды ✅</p>
+          )}
+
+          <button type="submit" className={styles.authButton}>
+            Тіркелу
+          </button>
         </form>
 
         <p className={styles.authSubtitle}>
@@ -169,6 +222,16 @@ const Registration = () => {
           </a>
         </p>
       </div>
+
+      {showEmailConfirm && (
+        <EmailConfirm
+          email={email}
+          onVerified={(verified) => {
+            setEmailVerified(verified); // Обновляем статус подтверждения email
+            setShowEmailConfirm(false); // Закрываем окно подтверждения
+          }}
+        />
+      )}
     </div>
   );
 };

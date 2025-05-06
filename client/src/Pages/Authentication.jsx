@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext.jsx';
@@ -8,12 +8,19 @@ import { toast } from 'react-hot-toast';
 
 const Authentication = () => {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, user } = useAuth(); // Получаем текущего пользователя из контекста
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
+
+  // Если пользователь уже авторизован, перенаправляем на главную страницу
+  useEffect(() => {
+    if (user) {
+      navigate('/'); // Если пользователь авторизован, переходим на главную
+    }
+  }, [user, navigate]);
 
   const goToRegister = () => {
     navigate('/register');
@@ -25,30 +32,34 @@ const Authentication = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
       const response = await axios.post('http://localhost:5000/auth/login', {
         email,
         password,
       });
-
-      if (response.status === 200) {
-        const { token, user } = response.data;
-
-        // Сохраняем токен и userId в localStorage
-        localStorage.setItem('authToken', token);
-        localStorage.setItem('userId', user.id);
-
-        login(token); // обновляем глобальное состояние, если используется
-
-        toast.success('Сіз сәтті кірдіңіз!');
-        navigate('/');
+  
+      const { token, user } = response.data;
+  
+      // Проверяем, что данные пользователя правильные
+      if (!user || !user.id) {
+        throw new Error('Не удалось получить данные пользователя');
       }
+  
+      // Сохраняем токен и userId в localStorage
+      localStorage.setItem('authToken', token);
+      localStorage.setItem('userId', user.id);
+  
+      // Обновляем глобальное состояние (если используется)
+      login(token, user); // обновляем состояние с пользователем
+  
+      toast.success('Сіз сәтті кірдіңіз!');
+      navigate('/'); // Перенаправление на главную после входа
     } catch (err) {
       console.error('Кіру қатесі:', err);
       setError('Қате email немесе құпия сөз');
     }
-  };
+  };  
 
   return (
     <div className={styles.authContainer}>
