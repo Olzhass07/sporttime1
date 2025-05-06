@@ -14,7 +14,7 @@
 .calorie-calculator h1 {
   color: #003366; /* Темно-синий */
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   font-size: 28px;
 }
 
@@ -215,7 +215,8 @@ input:focus {
   display: flex; /* Устанавливаем Flexbox */
   justify-content: flex-start; /* Элементы выравниваются слева */
   align-items: flex-start; /* Выравниваем элементы по верхнему краю */
-  gap: 10px; /* Отступ между изображением и основным контейнером */
+  gap: 0px; /* Отступ между изображением и основным контейнером */
+  margin-top: 50px;
 }
 
 .calorie-image {
@@ -224,12 +225,25 @@ input:focus {
 }
 
 .calorie-image img {
-  width: 200%; /* Изображение адаптируется под ширину контейнера */
-  height: auto; /* Сохраняем пропорции изображения */
+  width: 275px; /* Изображение адаптируется под ширину контейнера */
+  height: 550px; /* Сохраняем пропорции изображения */
   border-radius: 8px; /* Скругленные углы (опционально) */
   margin-top: 110px;
+  margin-left: 200px; /* Отступ слева для изображения */
 }
 
 .calorie-calculator {
   flex: 1; /* Основной контейнер занимает оставшееся пространство */
+}
+
+.gender-group {
+  text-align: center; /* Центрирует содержимое по горизонтали */
+}
+
+.gender-label {
+  display: block;
+  margin-bottom: 1px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #003366;
 }

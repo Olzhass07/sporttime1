@@ -1,4 +1,5 @@
 const programs = [
+
   {
     id: "massgain",
     title: "Масса жинау бағдарламасы (Hypertrophy Training)",
@@ -427,7 +428,7 @@ const programs = [
         ],
       },
     ],
-  }
-  
+  },
+
   ];    
   export default programs;

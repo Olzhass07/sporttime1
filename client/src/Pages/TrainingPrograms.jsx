@@ -34,7 +34,8 @@ export default function TrainingPrograms() {
     <>
       <Navbar />
       <div className="training-programs-container">
-        <h1 className="training-programs-title">Жаттығу бағдарламалары</h1>
+        <h1 className="training-programs-title">Жаттығу программалары</h1>
+
         <div className="training-programs-cards-grid">
           {programs.map((program) => (
             <div className="training-programs-card" key={program.id}>
