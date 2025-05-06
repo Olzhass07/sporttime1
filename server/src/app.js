@@ -5,6 +5,7 @@ const { PrismaClient } = require('@prisma/client');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const transporter = require('../utils/mailer');
+const preferencesRoutes = require('./routes/preferences');
 require('dotenv').config();
 
 const prisma = new PrismaClient();
@@ -14,6 +15,7 @@ const PORT = 5000;
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
+app.use('/api/preferences', preferencesRoutes);
 
 // === Отправка письма для подтверждения электронной почты ===
 app.post('/auth/send-verification-email', async (req, res) => {

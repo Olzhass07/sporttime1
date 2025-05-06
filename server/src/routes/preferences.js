@@ -1,11 +1,11 @@
 const express = require("express");
-const prisma = require("@prisma/client").PrismaClient;
+const { PrismaClient } = require("@prisma/client");
 const router = express.Router();
 
-const prismaClient = new prisma();
+const prisma = new PrismaClient();
 
-// POST /preferences — Сохранение или обновление предпочтений пользователя
-router.post("/preferences", async (req, res) => {
+// POST /api/preferences — Сохранение или обновление предпочтений пользователя
+router.post("/", async (req, res) => {
   const { userId, gender, age, goal, fitness } = req.body;
 
   if (!userId || !gender || !age || !goal || !fitness) {
@@ -13,7 +13,7 @@ router.post("/preferences", async (req, res) => {
   }
 
   try {
-    const user = await prismaClient.user.findUnique({
+    const user = await prisma.user.findUnique({
       where: { id: userId },
     });
 
@@ -21,7 +21,7 @@ router.post("/preferences", async (req, res) => {
       return res.status(404).json({ message: "Пользователь не найден" });
     }
 
-    const preferences = await prismaClient.userPreferences.upsert({
+    const preferences = await prisma.userPreferences.upsert({
       where: { userId },
       update: { gender, age, goal, fitness },
       create: { userId, gender, age, goal, fitness },
@@ -34,8 +34,8 @@ router.post("/preferences", async (req, res) => {
   }
 });
 
-// POST /preferences/reset — Сброс предпочтений пользователя
-router.post("/preferences/reset", async (req, res) => {
+// POST /api/preferences/reset — Сброс предпочтений пользователя
+router.post("/reset", async (req, res) => {
   const { userId } = req.body;
 
   if (!userId) {
@@ -43,7 +43,7 @@ router.post("/preferences/reset", async (req, res) => {
   }
 
   try {
-    const deletedPreferences = await prismaClient.userPreferences.delete({
+    const deletedPreferences = await prisma.userPreferences.delete({
       where: { userId },
     });
 
@@ -57,12 +57,12 @@ router.post("/preferences/reset", async (req, res) => {
   }
 });
 
-// GET /preferences/:userId — Получение предпочтений пользователя
-router.get("/preferences/:userId", async (req, res) => {
+// GET /api/preferences/:userId — Получение предпочтений пользователя
+router.get("/:userId", async (req, res) => {
   const { userId } = req.params;
 
   try {
-    const preferences = await prismaClient.userPreferences.findUnique({
+    const preferences = await prisma.userPreferences.findUnique({
       where: { userId: parseInt(userId) },
     });
 

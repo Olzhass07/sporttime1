@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import { toast } from "react-hot-toast";
 import "../styles/Profile.css";
+import Navbar from "../components/Navbar"; // Импорт Navbar
 
 const Profile = () => {
   const [nickname, setNickname] = useState("");
@@ -49,32 +50,35 @@ const Profile = () => {
   }, []);
 
   return (
-    <div className="profile-container">
-      <h1 className="profile-title">Профиль</h1>
-      <p className="profile-info">
-        <strong>Имя пользователя:</strong> {nickname || "Не указан"}
-      </p>
+    <>
+      <Navbar /> {/* Добавлен Navbar */}
+      <div className="profile-container">
+        <h1 className="profile-title">Профиль</h1>
+        <p className="profile-info">
+          <strong>Имя пользователя:</strong> {nickname || "Не указан"}
+        </p>
 
-      {preferences && caloriePreferences ? (
-        <>
-          <ul className="preferences-list">
-            <li><strong>Жынысы:</strong> {preferences.gender}</li>
-            <li><strong>Жасы:</strong> {caloriePreferences.age}</li>
-            <li><strong>Мақсат:</strong> {preferences.goal}</li>
-            <li><strong>Дене дайындығы:</strong> {preferences.fitness}</li>
-          </ul>
+        {preferences && caloriePreferences ? (
+          <>
+            <ul className="preferences-list">
+              <li><strong>Жынысы:</strong> {preferences.gender}</li>
+              <li><strong>Жасы:</strong> {caloriePreferences.age}</li>
+              <li><strong>Мақсат:</strong> {preferences.goal}</li>
+              <li><strong>Дене дайындығы:</strong> {preferences.fitness}</li>
+            </ul>
 
-          <ul className="calorie-preferences-list">
-            <li><strong>Калориялар:</strong> {Math.round(caloriePreferences.totalCalories)} ккал</li>
-            <li><strong>Бой:</strong> {caloriePreferences.height} см</li>
-            <li><strong>Салмақ:</strong> {caloriePreferences.weight} кг</li>
-            <li><strong>Вода (мл):</strong> {caloriePreferences.waterIntake} мл</li>
-          </ul>
-        </>
-      ) : (
-        <p className="loading-text">Загрузка предпочтений...</p>
-      )}
-    </div>
+            <ul className="calorie-preferences-list">
+              <li><strong>Калориялар:</strong> {Math.round(caloriePreferences.totalCalories)} ккал</li>
+              <li><strong>Бой:</strong> {caloriePreferences.height} см</li>
+              <li><strong>Салмақ:</strong> {caloriePreferences.weight} кг</li>
+              <li><strong>Вода (мл):</strong> {caloriePreferences.waterIntake} мл</li>
+            </ul>
+          </>
+        ) : (
+          <p className="loading-text">Загрузка предпочтений...</p>
+        )}
+      </div>
+    </>
   );
 };
 
