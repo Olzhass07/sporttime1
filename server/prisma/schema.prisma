@@ -4,17 +4,22 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url = env("DATABASE_URL")
+  url      = env("DATABASE_URL")
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  username  String   @unique
-  email     String   @unique
-  password  String
-  googleId  String?
-  createdAt DateTime @default(now())
-  preferences  UserPreferences?
+  id                      Int       @id @default(autoincrement())
+  username                String    @unique
+  email                   String    @unique
+  password                String
+  googleId                String?
+  createdAt               DateTime  @default(now())
+  preferences             UserPreferences?
+  isEmailVerified         Boolean   @default(false)
+  emailVerificationToken  String?
+  emailVerificationExpires DateTime?
+  passwordResetToken      String?
+  passwordResetExpires    DateTime?
 }
 
 model UserPreferences {
@@ -28,10 +33,9 @@ model UserPreferences {
   createdAt DateTime @default(now())
 }
 
-
-model Gif {
-  id     Int    @id @default(autoincrement())
-  gifId  String // Уникальный идентификатор гифки
-  gifUrl String // URL гифки
+model TempEmail {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  code      String   @unique  // ← добавь эту строку
+  expiresAt DateTime
 }
-
